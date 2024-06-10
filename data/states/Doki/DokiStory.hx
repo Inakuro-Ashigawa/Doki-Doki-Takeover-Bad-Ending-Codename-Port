@@ -22,7 +22,6 @@ import flixel.text.FlxTextBorderStyle;
 import StringTools;
 
 //vars
-var SaveData = FlxG.save.data;
 var scoreText:FlxText;
 var acceptInput:Bool = true;
 var selectedSomethin:Bool = false;
@@ -74,9 +73,16 @@ var grpSprites = new FlxTypedGroup();
 
 function create(){
 
-    allBeat = SaveData.checkAllSongsBeaten;
     SaveData.beatPrologue = false;
-    SaveData.beatMonika = false;
+    SaveData.beatSayori = false;
+    SaveData.beatNatsuki = false;
+    SaveData.beatYuri = false;
+    SaveData.beatFestival = false;
+    SaveData.beatEncore = false;
+    SaveData.beatProtag = false;
+
+    allBeat = SaveData.checkAllSongsBeaten;
+
 for (i in 1...weekData.length + 1)
     weekNames.push('week' + i, 'story');
 
@@ -253,20 +259,21 @@ function goToState(){
 		}
 
         PlayState.loadWeek({
-            name: "week1",
+            name: icons[curSelected][1],
             id: "week1",
             sprite: null,
             chars: [null, null, null],
             songs: [for (song in weekData[curSelected]) {name: song, hide: false}],
             difficulties: ['hard']
         }, "hard");
-        new FlxTimer().start(2, function(tmr:FlxTimer)
+        trace(weekData[curSelected]);
+        new FlxTimer().start(.01, function(tmr:FlxTimer)
             {
                 switch (curSelected)
                 {
                     default:
                     FlxG.switchState(new PlayState());
-                    new FlxTimer().start(2, function() {FlxG.switchState(new PlayState());});
+                    new FlxTimer().start(1, function() {FlxG.switchState(new PlayState());});
                 }
             });
             
@@ -369,7 +376,7 @@ else if(curSelected == 8 && story_sidestories != null)
 story_cursor.setPosition(icons[curSelected][2], icons[curSelected][3]);
 }
 
-function unlockedWeeks()
+public function unlockedWeeks()
 {
 if (SaveData.beatPrologue)
 {
@@ -429,9 +436,8 @@ for (i in stringThing)
     txtTracklist.text += "\n" + i.split(" (")[0];
 }
 
-txtWeekTitle.text = weekNames[curSelected].toUpperCase();
+txtWeekTitle.text = icons[curSelected][0];
 txtTracklist.text = txtTracklist.text.toUpperCase();
-
 txtTracklist.text += "\n";
 }
 

@@ -224,7 +224,11 @@ function update(elapsed:Float){
                 goToState();
             }	
 
-        if (FlxG.keys.justPressed.SEVEN) openSubState(new EditorPicker());
+        if (FlxG.keys.justPressed.SEVEN) {
+            openSubState(new EditorPicker());
+            persistentUpdate = false;
+            persistentDraw = true;
+        }
 
     
 
@@ -238,8 +242,6 @@ function changeItem(huh:Int = 0)
 	{
 		//curSelected += huh;
         curSelected = FlxMath.wrap(curSelected + huh, 0, optionShit.length-1);
-
-
 
 		menuItems.forEach(function(txt:FlxText)
 		{
@@ -314,7 +316,6 @@ function goToState()
     }
 function beatHit()
 {
-
     logoBl.animation.play('bump', true);
 
     if (!menu_character.animation.curAnim.looped && curBeat % 2 == 0)

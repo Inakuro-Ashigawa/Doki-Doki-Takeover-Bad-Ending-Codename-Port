@@ -192,7 +192,7 @@ function evilswap(Int)
 
                 
                 dad.x = 300;
-                dad.y = 20;
+                dad.y = -10;
                 boyfriend.x = 1000;
                 boyfriend.y = 300;
 

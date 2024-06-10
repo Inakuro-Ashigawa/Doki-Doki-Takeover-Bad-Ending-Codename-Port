@@ -28,6 +28,9 @@ var ratingStuff:Array<Dynamic> = [
     ['Way Past Cool', 1] //The value on this one isn't used actually, since Perfect is always "1"
 ];
 
+function create(){
+PauseSubState.script = 'data/scripts/DokiPause';
+}
 function postCreate() {
 
 camBars = new FlxCamera();
@@ -62,7 +65,8 @@ blackbarBottom.cameras = [camBars];
 add(blackbarBottom);	
 
 if (Pixle)
-DokiTxt.setFormat(Paths.font("CyberpunkWaifus.ttf"), 20, FlxColor.WHITE, "center", FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+DokiTxt.antialiasing = false;
+DokiTxt.setFormat(Paths.font("LanaPixel.ttf"), 20, FlxColor.WHITE, "center", FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 }
 function getRating(accuracy:Float):String {
     if (accuracy < 0) {
@@ -89,9 +93,6 @@ function getRatingFC(accuracy:Float, misses:Int):String {
     }
 }
 function update(elapsed:float){
-    if (controls.PAUSE && startedCountdown && canPause){
-
-    }
 
     var acc = FlxMath.roundDecimal(Math.max(accuracy, 0) * 100, 2);
     var rating:String = getRating(accuracy);

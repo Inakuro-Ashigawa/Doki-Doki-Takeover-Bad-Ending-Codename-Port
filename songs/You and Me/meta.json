@@ -11,6 +11,7 @@
 	"needsVoices": true,
 	"parsedColor": -35260,
 	"displayName": "You And Me",
+	"pause": "protag",
 	"icon": "protag",
 	"name": "You and Me",
 	"color": "#FF7644"
