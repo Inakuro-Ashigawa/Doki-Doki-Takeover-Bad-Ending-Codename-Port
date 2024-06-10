@@ -300,5 +300,5 @@ function update(elapsed:Float)
         }
     
 function destroy() {
-    FlxG.cameras.remove(pauseCam);
+    FlxG.cameras.remove(cameras);
 }

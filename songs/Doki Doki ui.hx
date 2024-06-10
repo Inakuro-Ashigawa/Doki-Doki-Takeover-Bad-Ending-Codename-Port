@@ -3,10 +3,9 @@ import openfl.text.TextFormat;
 import flixel.text.FlxTextBorderStyle;
 
 //vars
-var option = FlxG.save.data;
+public var option = FlxG.save.data;
 var blackbarTop = new FlxSprite(0, -102).loadGraphic(Paths.image('TightBars'));
 var blackbarBottom = new FlxSprite(0, 822).loadGraphic(Paths.image('TightBars'));
-public var songScore:Int = 0;
 public var DokiTxt:FlxText;
 public var DokiTxtTween:FlxTween;
 public var sicks:Int = 0;
@@ -31,6 +30,7 @@ var ratingStuff:Array<Dynamic> = [
 function create(){
 PauseSubState.script = 'data/scripts/DokiPause';
 }
+
 function postCreate() {
 
 camBars = new FlxCamera();
@@ -41,7 +41,7 @@ FlxG.cameras.add(camHUD, false);
 
 DokiTxt = new FlxText(0, 685, FlxG.width, "Score: 0 | Misses: 0 | Rating: ?");
 //DokiTxt = new FlxText(0, healthBarBG.y + 40, "Score: 0 Misses: 0  Rating: ?" , 20);
-DokiTxt.setFormat(Paths.font("riffic.ttf"), 20, FlxColor.WHITE, "center", FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+DokiTxt.setFormat(Paths.font("Journal.ttf"), 20, FlxColor.WHITE, "center", FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 DokiTxt.borderSize = 1.25;
 DokiTxt.cameras = [camHUD];
 DokiTxt.antialiasing = true;
@@ -97,11 +97,10 @@ function update(elapsed:float){
     var acc = FlxMath.roundDecimal(Math.max(accuracy, 0) * 100, 2);
     var rating:String = getRating(accuracy);
     getRatingFC(accuracy, misses);
-    if (songScore > 0 || acc > 0 || misses > 0) {
-        DokiTxt.text = "Score: " + songScore + " | Misses: " + misses +  " | Rating: " + rating + " (" + acc + "%)" + " - " + ratingFC;
+
+    if (songScore > 0 || acc > 0 || misses > 0)  DokiTxt.text = "Score: " + songScore + " | Misses: " + misses +  " | Rating: " + rating + " (" + acc + "%)" + " - " + ratingFC;
     } 
 
-}
 function onPlayerHit(event) {
     if (event.note.isSustainNote) return;
 

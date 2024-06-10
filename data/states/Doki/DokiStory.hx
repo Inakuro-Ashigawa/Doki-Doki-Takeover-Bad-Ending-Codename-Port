@@ -57,7 +57,7 @@ var weekData:Array<Dynamic> = [
 //Ima make my life easier by being lazy
 var icons:Array<Array<Dynamic>> = [	//internal file name, unlock condition, posX, posY
     ['Prologue', true, 394, 199],
-    ['Sayori', SaveData.beatPrologue, 612, 199],
+    ['Sayori', true, 612, 199],
     ['Natsuki', SaveData.beatSayori, 832, 199],
     ['Yuri', SaveData.beatNatsuki, 1052, 199],
     ['Monika', SaveData.beatYuri, 394, 369],
@@ -83,7 +83,7 @@ function create(){
 
     allBeat = SaveData.checkAllSongsBeaten;
 
-for (i in 1...weekData.length + 1)
+  for (i in 1...weekData.length + 1)
     weekNames.push('week' + i, 'story');
 
 
