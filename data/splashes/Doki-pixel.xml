@@ -1,0 +1,15 @@
+<!DOCTYPE codename-engine-splashes>
+<splashes sprite="game/score/pixelUI/pixel_Splash" alpha="1" antialiasing="false" scale="4">
+	<strum id="0"> <!-- LEFT -->
+		<anim name="note splash purple 1" anim="note splash purple 1" fps="24" x="-1" y="-2" />
+	</strum>
+	<strum id="1"> <!-- DOWN -->
+		<anim name="note splash blue 1" anim="note splash blue 1" fps="24" x="-1" y="-2" />
+	</strum>
+	<strum id="2"> <!-- UP -->
+		<anim name="note splash green 1" anim="note splash green 1" fps="24" x="-1" y="-2" />
+	</strum>
+	<strum id="3"> <!-- RIGHT -->
+		<anim name="note splash red 1" anim="note splash red 1" fps="24" x="-1" y="-2" />
+	</strum>
+</splashes>

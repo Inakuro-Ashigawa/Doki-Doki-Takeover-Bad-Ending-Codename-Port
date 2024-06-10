@@ -1,0 +1,16 @@
+{
+	"beatsPerMeasure": 4,
+	"opponentModeAllowed": false,
+	"coopAllowed": false,
+	"stepsPerBeat": 4,
+	"bpm": 151,
+	"difficulties": [
+		"hard"
+	],
+	"needsVoices": true,
+	"parsedColor": -2828,
+	"displayName": "high school conflict",
+	"icon": "monika-pixelnew",
+	"name": "High School Conflict",
+	"color": "#FFF4F4"
+}

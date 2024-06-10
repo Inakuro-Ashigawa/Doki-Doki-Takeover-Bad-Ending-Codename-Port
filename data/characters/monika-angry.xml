@@ -1,0 +1,12 @@
+<!DOCTYPE codename-engine-character>
+<character x="95" icon="monika-angrynew" y="131" isGF="false" scale="6" color="#C9CEFF" isPlayer="false" sprite="Monika_Finale_New">
+	<anim x="0" loop="false" y="0" fps="24" anim="Monika_Idle" name="idle"/>
+	<anim x="0" loop="false" y="0" fps="24" anim="Monika_singUP0" name="singUP"/>
+	<anim x="0" loop="false" y="-1" fps="24" anim="Monika_singRIGHT0" name="singRIGHT"/>
+	<anim x="0" loop="false" y="0" fps="24" anim="Monika_singLEFT0" name="singLEFT"/>
+	<anim x="-1" loop="false" y="2" fps="24" anim="Monika_singDOWN0" name="singDOWN"/>
+	<anim x="0" loop="false" y="1" fps="24" anim="Monika_singUPALT" name="singUP-alt"/>
+	<anim x="-1" loop="false" y="-1" fps="24" anim="Monika_singRIGHTALT" name="singRIGHT-alt"/>
+	<anim x="0" loop="false" y="0" fps="24" anim="Monika_singLEFTALT" name="singLEFT-alt"/>
+	<anim x="0" loop="false" y="2" fps="24" anim="Monika_singDOWNALT" name="singDOWN-alt"/>
+</character>

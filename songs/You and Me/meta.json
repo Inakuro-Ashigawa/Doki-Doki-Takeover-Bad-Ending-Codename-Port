@@ -1,0 +1,17 @@
+{
+	"beatsPerMeasure": 4,
+	"opponentModeAllowed": false,
+	"coopAllowed": false,
+	"stepsPerBeat": 4,
+	"bpm": 168,
+	"difficulties": [
+		"nat",
+		"protag"
+	],
+	"needsVoices": true,
+	"parsedColor": -35260,
+	"displayName": "You And Me",
+	"icon": "protag",
+	"name": "You and Me",
+	"color": "#FF7644"
+}

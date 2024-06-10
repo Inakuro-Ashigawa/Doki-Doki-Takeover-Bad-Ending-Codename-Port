@@ -1,0 +1,14 @@
+<!DOCTYPE codename-mod-options>
+<menu name="Doki Doki Takeover" desc="Settings">
+
+  <checkbox id="gfCountdown" name="GF Countdown" desc="If checked, GF will count and do animations during the countdown"/>
+
+ <choice id="bestGirl" name="bestGirl" desc="Pick Which Girl You Think Is the Best" >
+		<value name="Girlfriend" value="Girlfriend"/>
+		<value name="Sayori" value="Sayori"/>
+		<value name="Yuri" value="Yuri"/>
+		<value name="Monika" value="Monika"/>
+        <value name="Natsuki" value="Natsuki"/>
+		<value name="Libinta" value="Libinta"/>
+</choice>
+</menu>
