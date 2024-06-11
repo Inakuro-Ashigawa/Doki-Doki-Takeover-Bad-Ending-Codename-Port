@@ -1,0 +1,8 @@
+<!DOCTYPE codename-engine-character>
+<character x="20" icon="senpai-real" y="-420" isGF="false" scale="0.9" color="#FFAA6F" isPlayer="false" sprite="SenpaiNonPixel_Assets">
+	<anim x="0" loop="false" y="0" fps="24" anim="Senpai Returns Angy0" name="idle"/>
+	<anim x="37" loop="false" y="2" fps="24" anim="Senpai Returns Left Angy0" name="singLEFT"/>
+	<anim x="-16" loop="false" y="-4" fps="24" anim="Senpai Returns Right Angy0" name="singRIGHT"/>
+	<anim x="-3" loop="false" y="32" fps="24" anim="Senpai Returns Up Angy0" name="singUP"/>
+	<anim x="-9" loop="false" y="-85" fps="24" anim="Senpai Returns Down Angy0" name="singDOWN"/>
+</character>

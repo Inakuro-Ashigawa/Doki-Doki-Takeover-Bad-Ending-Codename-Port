@@ -13,7 +13,6 @@ public var goods:Int = 0;
 public var bads:Int = 0;
 public var shits:Int = 0;
 public var Pixle:Bool = false;
-public var splash:Bool = true;
 public var ratingFC:String = "FC";
 var ratingStuff:Array<Dynamic> = [
     ['AHH SUCKS.', 0.2], //From 0% to 19%
@@ -42,7 +41,7 @@ FlxG.cameras.add(camHUD, false);
 
 DokiTxt = new FlxText(0, 685, FlxG.width, "Score: 0 | breaks: 0 | Rating: ?");
 //DokiTxt = new FlxText(0, healthBarBG.y + 40, "Score: 0 Misses: 0  Rating: ?" , 20);
-DokiTxt.setFormat(Paths.font("Journal.ttf"), 20, FlxColor.WHITE, "center", FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+DokiTxt.setFormat(Paths.font("HKGrotesk-Bold.ttf"), 20, FlxColor.WHITE, "center", FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 DokiTxt.borderSize = 1.25;
 DokiTxt.cameras = [camHUD];
 DokiTxt.antialiasing = true;
@@ -127,7 +126,6 @@ function onPlayerHit(event) {
 }
 
 function onNoteCreation(event:NoteCreationEvent) {
-    if (splash)
     event.note.splash = "Doki";
 }
 public function blackBars(inorout:Bool)

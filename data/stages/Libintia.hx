@@ -19,7 +19,7 @@ defaultCamZoom = 1;
 
 function create(){
     splash = false;
-    player.cpu = true;
+    //player.cpu = true;
     
     remove(boyfriend);
 
