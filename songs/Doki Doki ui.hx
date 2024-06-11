@@ -39,7 +39,7 @@ FlxG.cameras.remove(camHUD, false);
 FlxG.cameras.add(camBars, false);
 FlxG.cameras.add(camHUD, false);
 
-DokiTxt = new FlxText(0, 685, FlxG.width, "Score: 0 | Misses: 0 | Rating: ?");
+DokiTxt = new FlxText(0, 685, FlxG.width, "Score: 0 | breaks: 0 | Rating: ?");
 //DokiTxt = new FlxText(0, healthBarBG.y + 40, "Score: 0 Misses: 0  Rating: ?" , 20);
 DokiTxt.setFormat(Paths.font("Journal.ttf"), 20, FlxColor.WHITE, "center", FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 DokiTxt.borderSize = 1.25;
@@ -98,7 +98,7 @@ function update(elapsed:float){
     var rating:String = getRating(accuracy);
     getRatingFC(accuracy, misses);
 
-    if (songScore > 0 || acc > 0 || misses > 0)  DokiTxt.text = "Score: " + songScore + " | Misses: " + misses +  " | Rating: " + rating + " (" + acc + "%)" + " - " + ratingFC;
+    if (songScore > 0 || acc > 0 || misses > 0)  DokiTxt.text = "Score: " + songScore + " | breaks: " + misses +  " | Rating: " + rating + " (" + acc + "%)" + " - " + ratingFC;
     } 
 
 function onPlayerHit(event) {
