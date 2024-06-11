@@ -1,0 +1,12 @@
+<!DOCTYPE codename-engine-character>
+<character x="-300" icon="hidden" y="0" isGF="false" color="#000000" flipX="true" isPlayer="true" holdTime="6.1" sprite="ghost/Libitina">
+	<anim x="0" loop="true" y="0" fps="24" anim="Libi Idle" name="idle"/>
+	<anim x="100" loop="false" y="29" fps="24" anim="Libi left0" name="singLEFT"/>
+	<anim x="120" loop="false" y="-67" fps="24" anim="Libi down0" name="singDOWN"/>
+	<anim x="42" loop="false" y="65" fps="24" anim="Libi up0" name="singUP"/>
+	<anim x="20" loop="false" y="-38" fps="24" anim="Libi right0" name="singRIGHT"/>
+	<anim x="150" loop="false" y="-90" fps="24" anim="Libi left miss" name="singLEFTmiss"/>
+	<anim x="120" loop="false" y="-70" fps="24" anim="Libi down miss" name="singDOWNmiss"/>
+	<anim x="152" loop="false" y="-65" fps="24" anim="Libi up miss" name="singUPmiss"/>
+	<anim x="45" loop="false" y="-58" fps="24" anim="Libi right miss" name="singRIGHTmiss"/>
+</character>

@@ -71,7 +71,7 @@ function create(event){
 	pauseCam.bgColor = 0x88000000;
     pauseCam.alpha = 1;
     
-    isLibitina = PlayState.SONG.meta.displayName.toLowerCase() == 'libitina';
+    isLibitina = PlayState.SONG.meta.displayName == 'libitina';
     isVallHallA = PlayState.SONG.meta.displayName.toLowerCase() == 'drinks on me';
 
     bg = new FlxSprite(-FlxG.width * FlxG.camera.zoom,
