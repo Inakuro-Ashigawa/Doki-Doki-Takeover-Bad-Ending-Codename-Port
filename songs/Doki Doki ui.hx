@@ -13,6 +13,7 @@ public var goods:Int = 0;
 public var bads:Int = 0;
 public var shits:Int = 0;
 public var Pixle:Bool = false;
+public var splash:Bool = true;
 public var ratingFC:String = "FC";
 var ratingStuff:Array<Dynamic> = [
     ['AHH SUCKS.', 0.2], //From 0% to 19%
@@ -126,6 +127,7 @@ function onPlayerHit(event) {
 }
 
 function onNoteCreation(event:NoteCreationEvent) {
+    if(splash)
     event.note.splash = "Doki";
 }
 public function blackBars(inorout:Bool)

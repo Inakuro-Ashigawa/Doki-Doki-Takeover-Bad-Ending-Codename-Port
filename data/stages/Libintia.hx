@@ -14,6 +14,7 @@ var testVMLE = new FlxVideoSprite();
 //vars
 var blackScreen:FlxSprite;
 var fishy = new CustomShader('FishEyeShader');
+var glitch2 = new CustomShader('GlitchShader');
 var inverty = new CustomShader('InvertShader');
 defaultCamZoom = 1;
 
@@ -166,7 +167,7 @@ function create(){
 
     infoBG = new FlxSprite(0,0);
     infoBG.frames = Paths.getSparrowAtlas('libitina/InfoMidwayBG');
-    infoBG.animation.addByPrefix('idle', 'InfoBG', 24, false);
+    infoBG.animation.addByPrefix('idle', 'InfoBG', 24, true);
     infoBG.animation.play('idle');
     infoBG.setGraphicSize(Std.int((FlxG.width * 1.1) / defaultCamZoom));
     infoBG.updateHitbox();
@@ -177,7 +178,7 @@ function create(){
 
     infoBG2 = new FlxSprite(0,0);
     infoBG2.frames = Paths.getSparrowAtlas('libitina/InfoMidwayBGInvert');
-    infoBG2.animation.addByPrefix('idle', 'InfoBG', 24, false);
+    infoBG2.animation.addByPrefix('idle', 'InfoBG', 24, true);
     infoBG2.animation.play('idle');
     infoBG2.setGraphicSize(Std.int((FlxG.width * 1.1) / defaultCamZoom));
     infoBG2.updateHitbox();
@@ -280,9 +281,9 @@ function create(){
     libVignette.updateHitbox();
     libVignette.scrollFactor.set(0,0);
     libVignette.cameras = [camGame2];
+
     
 }
-
 var cancelCameraMove:Bool = true;
 
 
@@ -291,6 +292,13 @@ function onSongStart(){
     camHUD.alpha = 0.0001;      
     camFollow.x = 100;
     camFollow.y = 300;
+}
+function postUpdate(elapsed){
+    fishy.warp = .4;
+    fishy.scan = .4;
+
+    glitch2.intensityChromatic = .5;
+    
 }
 function postCreate(){
 for (i in playerStrums.members) 
@@ -355,13 +363,15 @@ function libShader(show:Bool = true, old:Bool = false){
     if (show)
         {
             FlxG.camera.addShader(fishy);
-            FlxG.camGame2.addShader(fishy);
+            FlxG.camera.addShader(glitch2);
+            FlxG.camGame2.addShader(glitch2);
         }
         else
         {
 
             FlxG.camera.addShader(fishy);
-            camGame2.removeShader(aberration);
+            FlxG.camera.removeShader(glitch2);
+            camGame2.removeShader(fishy);
         }
 
 }
