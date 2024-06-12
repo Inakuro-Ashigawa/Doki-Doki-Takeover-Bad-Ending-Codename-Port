@@ -12,14 +12,14 @@ function postUpdate(elapsed){
         switch (strumLines.members[curCameraTarget].characters[0].getAnimName()) {
             case "singLEFT", "singLEFT-alt": 
                 camFollow.x -= 20;
-                angleCamVar = -20/30;
+                angleCamVar = -20/50;
             case "singDOWN", "singDOWN-alt": 
-                camFollow.y += 20;
+                camFollow.y += 120;
             case "singUP", "singUP-alt": 
-                camFollow.y -= 20;
+                camFollow.y -= 120;
             case "singRIGHT", "singRIGHT-alt": 
                 camFollow.x += 20;
-                angleCamVar = 20/30;
+                angleCamVar = 20/50;
     }
     if (angleCamVar != 0) angleCamVar = (lerp(angleCamVar, 0, angleLerp));
     camera.angle = (lerp(camera.angle, 0 + angleCamVar, angleLerp));

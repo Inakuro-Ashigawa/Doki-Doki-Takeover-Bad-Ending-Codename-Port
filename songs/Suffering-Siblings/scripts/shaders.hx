@@ -3,6 +3,7 @@ public var distorDad = new CustomShader("distortShader");
 public var aberration = new CustomShader('chromaticAberration');
 public var pibbyShader = new CustomShader('glitchThingy');
 static var bloom = new CustomShader('bloom');// bloom shader
+var singDir = ["LEFT", "DOWN", "UP", "RIGHT"];
 
 var dadCamZoom:Int = 0.8;
 var bfCamZoom:Int = 1.5;
@@ -180,6 +181,9 @@ function onDadHit(note:NoteHitnote){
     if (curNotes == "Second Char Sing" || curNotes == "Second Char Glitch"){// second opponen char singing
         isJakePlay = true;
         note.characters = strumLines.members[3].characters;
+    }
+    if (curNotes == "Both Char Sing"){
+        strumLines.members[3].characters[0].playAnim("sing" + singDir[note.direction], true);
     }
 
     switch(dad.curCharacter) {

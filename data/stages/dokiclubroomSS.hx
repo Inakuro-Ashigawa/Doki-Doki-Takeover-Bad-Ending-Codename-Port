@@ -1,7 +1,6 @@
 
 var flickerTween:Array<FlxTween> = [];
 var flickerTween2:Array<FlxTween> = [];
-//var dad2nd = strumLines.members[3].characters[0];
 var light = new FlxSprite(-700, -520).loadGraphic(Paths.image('clubroom/light'));
 
 function create(){
@@ -12,7 +11,7 @@ function create(){
 	flickerTween2 = FlxTween.tween(light, {alpha: 0}, 0.25, {ease: FlxEase.bounceInOut, type: 4});
 	flickerTween2.active = true;
 
-    strumLines.members[0].characters[0].x = -130;
+    strumLines.members[0].characters[0].x = -140;
     camOverlay = new FlxCamera();
     camOverlay.bgColor = 0;
     FlxG.cameras.remove(camHUD, false);
@@ -76,3 +75,32 @@ function update(elapsed) {
         dark.angle = light.angle;
         bulb.angle = light.angle;
 }
+function stepHit(curStep){
+    switch (curStep)
+    {
+        case 1:
+            blackBars(true);
+        case 128:
+            blackBars(false);
+        case 768:
+            blackBars(true);
+        case 1024:
+            blackBars(false);
+        case 1408:
+            blackBars(true);
+        case 1664:
+            blackBars(false);
+        case 1696:
+            blackBars(true);
+        case 1952:
+            blackBars(false);
+        case 2464:
+            blackBars(true);
+        case 2720:
+            blackBars(false);
+        case 2976:
+            blackBars(true);
+        case 3104:
+            blackBars(false);
+        }
+    }

@@ -54,11 +54,14 @@ var pauseArt:FlxSprite;
 
 var isLibitina:Bool = false;
 var isVallHallA:Bool = false;
+var funni:Bool = false;
 
 var itmColor:FlxColor = 0xFFFF7CFF;
 var selColor:FlxColor = 0xFFFFCFFF;
 var levelInfo:FlxText = new FlxText(20, 15, 0, PlayState.SONG.meta.displayName, 32);
 var deathText:FlxText = new FlxText(20, 50, 0, "Blue balled: " + PlayState.deathCounter, 32);
+//not used...yet
+var pauseTxt:FlxText = new FlxText(20, 15, 0, PlayState.difficulty, 32);
 
 function create(event){
     event.cancel();
@@ -74,8 +77,9 @@ function create(event){
     isLibitina = PlayState.SONG.meta.displayName == 'libitina';
     isVallHallA = PlayState.SONG.meta.displayName.toLowerCase() == 'drinks on me';
 
-    bg = new FlxSprite(-FlxG.width * FlxG.camera.zoom,
-        -FlxG.height * FlxG.camera.zoom).makeGraphic(FlxG.width * 3, FlxG.height * 3, FlxColor.BLACK);
+    Funni =  PlayState.SONG.meta.displayName == 'Suffering Siblings';
+
+    bg = new FlxSprite(-FlxG.width * FlxG.camera.zoom,-FlxG.height * FlxG.camera.zoom).makeGraphic(FlxG.width * 3, FlxG.height * 3, FlxColor.BLACK);
     bg.alpha = 0;
     bg.cameras = [pauseCam];
     bg.scrollFactor.set();
@@ -100,6 +104,20 @@ function create(event){
         startDelay: 0.2
     });
 
+    if (Funni){
+    FlxTween.tween(pauseArt, {x: FlxG.width - pauseArt.width - 100}, 1.2, {
+        ease: FlxEase.quartInOut,
+        startDelay: 0.2
+    });
+
+    FlxTween.tween(pauseArt, {alpha: 1}, 1.2, {
+        ease: FlxEase.quartInOut,
+        startDelay: 0.2
+    });
+        pauseArt.y += 150;
+        pauseArt.x + 250;
+        pauseArt.alpha = 0.0001;
+    }
     levelInfo.text = PlayState.SONG.meta.displayName;
     levelInfo.antialiasing = Options.Antialiasing;
     levelInfo.scrollFactor.set();
@@ -108,6 +126,8 @@ function create(event){
     levelInfo.borderSize = 1.25;
     levelInfo.updateHitbox();
     add(levelInfo);
+
+
 
     deathText.antialiasing = Options.Antialiasing;
     deathText.scrollFactor.set();
@@ -119,14 +139,25 @@ function create(event){
     if (PlayState.SONG.meta.displayName.toLowerCase() != 'credits')
         add(deathText);
 
+    pauseTxt.antialiasing = Options.Antialiasing;
+    pauseTxt.scrollFactor.set();
+    pauseTxt.setFormat(Paths.font("riffic.ttf"), 32, FlxColor.WHITE, "RIGHT", FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+    pauseTxt.borderSize = 1.25;
+    pauseTxt.cameras = [pauseCam];
+    pauseTxt.updateHitbox();
+    pauseTxt.screenCenter();
+    add(pauseTxt);
+
     levelInfo.alpha = 0;
     deathText.alpha = 0;
+    pauseTxt.alpha = 1;
 
     deathText.x = FlxG.width - (deathText.width + 20);
     levelInfo.x = FlxG.width - (levelInfo.width + 20);
 
-    FlxTween.tween(bg, {alpha: 0.6}, 0.4, {ease: FlxEase.quartInOut});
+    FlxTween.tween(bg, {alpha: 0.6}, 1.3, {ease: FlxEase.quartInOut, type: 4});
     FlxTween.tween(levelInfo, {alpha: 1, y: 20 + -2}, 0.4, {ease: FlxEase.quartInOut, startDelay: 0.3});
+    FlxTween.tween(pauseTxt, {alpha: 1, y: deathText.y - 35}, 0.4, {ease: FlxEase.quartInOut, startDelay: 0.7});
     FlxTween.tween(deathText, {alpha: 1, y: deathText.y + 5}, 0.4, {ease: FlxEase.quartInOut, startDelay: 0.7});
 
     if (isLibitina && PlayState.isStoryMode)
@@ -177,8 +208,7 @@ function create(event){
                 });
             }
             changeSelection();
-            cameras = [pauseCam];
-            
+            cameras = [pauseCam];     
 }
 function update(elapsed:Float)
 	{
@@ -208,7 +238,7 @@ function update(elapsed:Float)
                         PlayState.instance.registerSmoothTransition();
                         FlxG.resetState();
                     case "Practice Mode":
-                        playerCpu = !playerCpu;
+                        player.Cpu = !player.Cpu;
                    case "Exit to Menu":
                     CoolUtil.playMenuSong();
                     FlxG.switchState(PlayState.isStoryMode ? new StoryMenuState() : new FreeplayState());
