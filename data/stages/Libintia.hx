@@ -36,12 +36,12 @@ function create(){
     rainBG.setGraphicSize(Std.int(rainBG.width / defaultCamZoom));
     rainBG.updateHitbox();
     rainBG.cameras = [camGame2];
-    add(rainBG);
     rainBG.play();
+    add(rainBG);
 
     deskBG1 = new FlxSprite(0,0).loadGraphic(Paths.image('libitina/introdesk'));
-    deskBG1.antialiasing = Options.antialiasing;
     deskBG1.scrollFactor.set(0,0);
+    deskBG1.antialiasing = Options.antialiasing;
     deskBG1.cameras = [camGame2];
     deskBG1.setGraphicSize(Std.int(FlxG.width / defaultCamZoom));
     deskBG1.updateHitbox();
@@ -361,7 +361,7 @@ function libShader(show:Bool = true, old:Bool = false){
         {
 
             FlxG.camera.addShader(fishy);
-            FlxG.camGame2.removeShader(fishy);
+            camGame2.removeShader(aberration);
         }
 
 }

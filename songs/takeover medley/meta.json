@@ -1,0 +1,16 @@
+{
+	"beatsPerMeasure": 4,
+	"opponentModeAllowed": false,
+	"coopAllowed": false,
+	"stepsPerBeat": 4,
+	"bpm": 92,
+	"difficulties": [
+		"hard"
+	],
+	"needsVoices": true,
+	"parsedColor": -14100652,
+	"displayName": "Takeover Medley",
+	"icon": "monika",
+	"name": "Takeover Medley",
+	"color": "#28D754"
+}

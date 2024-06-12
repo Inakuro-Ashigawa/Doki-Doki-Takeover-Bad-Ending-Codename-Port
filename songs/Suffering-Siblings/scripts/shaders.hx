@@ -2,6 +2,7 @@ public var glitches = new CustomShader("NewGlitch2");
 public var distorDad = new CustomShader("distortShader");
 public var aberration = new CustomShader('chromaticAberration');
 public var pibbyShader = new CustomShader('glitchThingy');
+public var invert = new CustomShader('distortShader');
 static var bloom = new CustomShader('bloom');// bloom shader
 var singDir = ["LEFT", "DOWN", "UP", "RIGHT"];
 
@@ -20,6 +21,7 @@ static var doGlitchIconEffect = true;
 function postUpdate(elapsed) {
     iconP1.x = 620;
     iconP2.x = 520;
+    
 
     switch(curCameraTarget) {
         case 0:
@@ -50,9 +52,12 @@ function postCreate(){
         camHUD.addShader(aberration);
         camGame.addShader(pibbyShader);
         camHUD.addShader(pibbyShader);
+        //camGame.addShader(invert);
         camGame.addShader(bloom);
 
 
+        invert.binaryIntensity = 1;
+        invert.negativity = .3;
         pibbyShader.iMouseX = 500;
         pibbyShader.NUM_SAMPLES = 3;
         bloom.size = 0.0;

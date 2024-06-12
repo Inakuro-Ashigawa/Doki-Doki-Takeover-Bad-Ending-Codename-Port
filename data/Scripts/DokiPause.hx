@@ -58,11 +58,14 @@ var funni:Bool = false;
 
 var itmColor:FlxColor = 0xFFFF7CFF;
 var selColor:FlxColor = 0xFFFFCFFF;
-var levelInfo:FlxText = new FlxText(20, 15, 0, PlayState.SONG.meta.displayName, 32);
+var levelInfo:FlxText = new FlxText(20, 50, 0, PlayState.SONG.meta.displayName, 32);
 var deathText:FlxText = new FlxText(20, 50, 0, "Blue balled: " + PlayState.deathCounter, 32);
+var pauseTxt:FlxText = new FlxText(20, 50, 0, PlayState.difficulty, 32);
 //not used...yet
-var pauseTxt:FlxText = new FlxText(20, 15, 0, PlayState.difficulty, 32);
+//var botplayTxt:FlxText = new FlxText(20, 50, 0, "Botplay = " +  FlxG.save.data.botplayOption, 32);
 
+function postCreate(){
+}
 function create(event){
     event.cancel();
 
@@ -75,7 +78,7 @@ function create(event){
     pauseCam.alpha = 1;
     
     isLibitina = PlayState.SONG.meta.displayName == 'libitina';
-    isVallHallA = PlayState.SONG.meta.displayName.toLowerCase() == 'drinks on me';
+    isVallHallA = PlayState.SONG.meta.displayName == 'drinks on me';
 
     Funni =  PlayState.SONG.meta.displayName == 'Suffering Siblings';
 
@@ -118,48 +121,50 @@ function create(event){
         pauseArt.x + 250;
         pauseArt.alpha = 0.0001;
     }
+
     levelInfo.text = PlayState.SONG.meta.displayName;
     levelInfo.antialiasing = Options.Antialiasing;
     levelInfo.scrollFactor.set();
     levelInfo.cameras = [pauseCam];
     levelInfo.setFormat(Paths.font("riffic.ttf"), 32, FlxColor.WHITE, "RIGHT", FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
-    levelInfo.borderSize = 1.25;
+    levelInfo.borderSize = 1.9;
     levelInfo.updateHitbox();
     add(levelInfo);
-
-
 
     deathText.antialiasing = Options.Antialiasing;
     deathText.scrollFactor.set();
     deathText.setFormat(Paths.font("riffic.ttf"), 32, FlxColor.WHITE, "RIGHT", FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
-    deathText.borderSize = 1.25;
+    deathText.borderSize = 1.9;
     deathText.cameras = [pauseCam];
     deathText.updateHitbox();
 
-    if (PlayState.SONG.meta.displayName.toLowerCase() != 'credits')
+    if (PlayState.SONG.meta.displayName!= 'credits')
         add(deathText);
 
     pauseTxt.antialiasing = Options.Antialiasing;
     pauseTxt.scrollFactor.set();
     pauseTxt.setFormat(Paths.font("riffic.ttf"), 32, FlxColor.WHITE, "RIGHT", FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
-    pauseTxt.borderSize = 1.25;
+    pauseTxt.borderSize = 1.9;
     pauseTxt.cameras = [pauseCam];
     pauseTxt.updateHitbox();
     pauseTxt.screenCenter();
     add(pauseTxt);
 
+
     levelInfo.alpha = 0;
     deathText.alpha = 0;
-    pauseTxt.alpha = 1;
+    pauseTxt.alpha = 0;
 
     deathText.x = FlxG.width - (deathText.width + 20);
     levelInfo.x = FlxG.width - (levelInfo.width + 20);
+    pauseTxt.x = FlxG.width - (pauseTxt.width + 20);
 
     FlxTween.tween(bg, {alpha: 0.6}, 1.3, {ease: FlxEase.quartInOut, type: 4});
     FlxTween.tween(levelInfo, {alpha: 1, y: 20 + -2}, 0.4, {ease: FlxEase.quartInOut, startDelay: 0.3});
-    FlxTween.tween(pauseTxt, {alpha: 1, y: deathText.y - 35}, 0.4, {ease: FlxEase.quartInOut, startDelay: 0.7});
+    FlxTween.tween(pauseTxt, {alpha: 1, y: deathText.y + 40}, 0.4, {ease: FlxEase.quartInOut, startDelay: 0.7});
     FlxTween.tween(deathText, {alpha: 1, y: deathText.y + 5}, 0.4, {ease: FlxEase.quartInOut, startDelay: 0.7});
 
+    
     if (isLibitina && PlayState.isStoryMode)
 		{
 			pauseArt.visible = false;
@@ -196,8 +201,8 @@ function create(event){
 
         for (i in 0...menuItems.length)
             {
-                var songText:FlxText = new FlxText(-350, 370 + (i * 50), 0, menuItems[i].toLowerCase());
-                songText.setFormat(Paths.font("riffic.ttf"), 27, FlxColor.WHITE, "left", FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+                var songText:FlxText = new FlxText(-350, 370 + (i * 70), 0, menuItems[i].toLowerCase());
+                songText.setFormat(Paths.font("Journal.ttf"), 27, FlxColor.WHITE, "left", FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
                 songText.antialiasing = Options.antialiasing;
                 songText.cameras = [pauseCam];
                 songText.ID = i;
@@ -238,7 +243,7 @@ function update(elapsed:Float)
                         PlayState.instance.registerSmoothTransition();
                         FlxG.resetState();
                     case "Practice Mode":
-                        player.Cpu = !player.Cpu;
+                        FlxG.save.data.botplayOption = !FlxG.save.data.botplayOption;
                    case "Exit to Menu":
                     CoolUtil.playMenuSong();
                     FlxG.switchState(PlayState.isStoryMode ? new StoryMenuState() : new FreeplayState());
@@ -273,9 +278,9 @@ function update(elapsed:Float)
                 else
                 {
                     if (txt.ID == curSelected)
-                        txt.setFormat(Paths.font("riffic.ttf"), 27, selColor, "LEFT");
+                        txt.setFormat(Paths.font("riffic.ttf"), 40, selColor, "LEFT");
                     else
-                        txt.setFormat(Paths.font("riffic.ttf"), 27, itmColor, "LEFT");
+                        txt.setFormat(Paths.font("riffic.ttf"), 40, itmColor, "LEFT");
                 }
             });
         }
@@ -289,7 +294,7 @@ function update(elapsed:Float)
     
             for (i in 0...menuItems.length)
             {
-                var songText:FlxText = new FlxText(50, 370 + (i * 50), 0, menuItems[i].toLowerCase());
+                var songText:FlxText = new FlxText(50, 370 + (i * 50), 0, menuItems[i]);
                 songText.setFormat(Paths.font("riffic.ttf"), 27, FlxColor.WHITE, "left", FlxTextBorderStyle.OUTLINE, 0xFFFF7CFF);
                 songText.antialiasing = Options.Antialiasing;
                 songText.ID = i;

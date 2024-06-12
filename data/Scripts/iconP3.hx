@@ -26,14 +26,24 @@ function update(elapsed:Float){
 
     if (isPlayer){
         if (healthBar.percent < 20){
-            if (Options.gameplayShaders && doGlitchIconEffect) iconP3.shader = glitches;
+            if (Options.gameplayShaders && doGlitchIconEffect) 
+                boyfriend.shader = invert;
+                gf.shader = invert;
+                iconP3.shader = glitches;
         } else {
+            boyfriend.shader = null;
+            gf.shader = null;
             iconP3.shader = null;
         }
     } else {
         if (healthBar.percent > 80){
-            if (Options.gameplayShaders && doGlitchIconEffect) iconP3.shader = glitches;
+            if (Options.gameplayShaders && doGlitchIconEffect) 
+            boyfriend.shader = invert;
+            gf.shader = invert;
+            iconP3.shader = glitches;
         } else {
+            boyfriend.shader = null;
+            gf.shader = null;
             iconP3.shader = null;
         }
     }
