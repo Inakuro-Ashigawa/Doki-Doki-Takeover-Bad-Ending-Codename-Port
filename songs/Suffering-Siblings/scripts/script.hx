@@ -17,10 +17,10 @@ function onSongStart(){
 	curCameraTarget = -1;
 	camFollow.x = 650;
 	camFollow.y = 400;
-	defaultCamZoom = 0.2;
+	defaultCamZoom = 0.5;
     camHUD.alpha = 0;
 
-	camera.zoom = 0.2;
+	camera.zoom = 0.5;
 
 	camera.flash(FlxColor.BLACK, 10);
 }

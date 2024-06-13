@@ -1,11 +1,16 @@
 import Takeover.BGSprite;
 import flixel.group.FlxGroup.FlxTypedGroup;
-
+import flixel.addons.display.FlxBackdrop;
 var bgDokis:FlxTypedGroup<FlxSprite>;
 var bgDokis = new FlxTypedGroup();
-
+var whiteflash:FlxSprite;
+var pinkOverlay:FlxSprite;
+var blackScreen:FlxSprite;
+var blackScreenBG:FlxSprite;
+var blackScreentwo:FlxSprite;
 var isFestival:Bool = false;
 var cancelCameraMove:Bool = false;
+var necksnap:Bool = false;
 
 function onCameraMove(e) if(cancelCameraMove) e.cancel();
 
@@ -110,6 +115,11 @@ function create(){
             sparkleFG.updateHitbox();
             sparkleFG.screenCenter();
             sparkleFG.antialiasing = Options.antialiasing;
+
+
+            pinkOverlay = new FlxSprite(-FlxG.width * FlxG.camera.zoom, -FlxG.height * FlxG.camera.zoom).makeGraphic(FlxG.width * 3, FlxG.height * 3, 0xFFF281F2);
+            pinkOverlay.alpha = 0.2;
+            pinkOverlay.scrollFactor.set();
         }
         case 'constricted':
         {
@@ -155,6 +165,19 @@ clubroom.setGraphicSize(Std.int(clubroom.width * 1.6));
 clubroom.updateHitbox();
 add(clubroom);
 
+blackScreen = new FlxSprite(-FlxG.width * FlxG.camera.zoom,
+    -FlxG.height * FlxG.camera.zoom).makeGraphic(FlxG.width * 3, FlxG.height * 3, FlxColor.BLACK);
+blackScreen.scrollFactor.set();
+
+blackScreenBG = new FlxSprite(-FlxG.width * FlxG.camera.zoom,
+    -FlxG.height * FlxG.camera.zoom).makeGraphic(FlxG.width * 3, FlxG.height * 3, FlxColor.BLACK);
+blackScreenBG.alpha = 0.0001;
+blackScreenBG.scrollFactor.set();
+
+blackScreentwo = new FlxSprite(-FlxG.width * FlxG.camera.zoom,
+    -FlxG.height * FlxG.camera.zoom).makeGraphic(FlxG.width * 3, FlxG.height * 3, FlxColor.BLACK);
+blackScreentwo.scrollFactor.set();
+
 
 if (curSong.toLowerCase() == 'neet')
 {
@@ -197,7 +220,7 @@ if (curSong.toLowerCase() == 'neet')
             if (!boyfriend.curCharacter == 'yuri'  && !dad.curCharacter == 'yuri')
                 bgDokis.add(yuri);
         }
-        else if (curSong.toLowerCase() == 'obsession' && isStoryMode && showCutscene && !ForceDisableDialogue)
+        else if (curSong.toLowerCase() == 'obsession' && PlayState.isStoryMode)
         {
             bgDokis.add(sayori);
             bgDokis.add(natsuki);
@@ -236,10 +259,54 @@ if (curSong.toLowerCase() == 'neet')
         }
 
     }
+function update(){
+    if (necksnap){
+        gf.danceOnBeat = false;
+        gf.playAnim('necksnap');
+    }
+}
 function postCreate(){
-add(gf);
-add(dad);
-add(boyfriend);
+
+if (curSong.toLowerCase() == 'obsession')
+    {
+        // blackScreenBG
+        insert(members.indexOf(gf) + 1, blackScreenBG);
+        add(blackScreentwo);
+        blackScreentwo.visible = false;
+        
+    }
+
+    add(gf);
+    add(dad);
+    add(boyfriend);
+
+    if (curSong.toLowerCase() == !'obsession')
+    {
+    add(sparkleBG);
+    }
+
+    bakaOverlay = new FlxSprite(0, 0);
+    bakaOverlay.frames = Paths.getSparrowAtlas('clubroom/BakaBGDoodles');
+    bakaOverlay.animation.addByPrefix('normal', 'Normal Overlay', 24, true);
+    bakaOverlay.animation.addByPrefix('party rock is', 'Rock Overlay', 24, true);
+    bakaOverlay.animation.addByPrefix('FUCK', 'Tank Overlay', 24, true);
+    bakaOverlay.animation.play('normal');
+    bakaOverlay.scrollFactor.set();
+    bakaOverlay.visible = false;
+    bakaOverlay.alpha = 0.001;
+    bakaOverlay.cameras = [camHUD];
+    bakaOverlay.setGraphicSize(Std.int(FlxG.width / defaultHudZoom));
+    bakaOverlay.updateHitbox();
+    bakaOverlay.screenCenter();
+    add(bakaOverlay);
+
+    whiteflash = new FlxSprite(-FlxG.width * FlxG.camera.zoom,
+-FlxG.height * FlxG.camera.zoom).makeGraphic(FlxG.width * 3, FlxG.height * 3, 0xFFFDC1FF);
+    whiteflash.alpha = 0.0001;
+    whiteflash.cameras = [camHUD];
+    add(whiteflash);
+
+
 }
 function stepHit(curStep){
     switch (curSong)
@@ -277,11 +344,118 @@ function stepHit(curStep){
                         sayonara();
                     case 768:
                         FlxG.camera.zoom = 0.75;
-                    case 774:
+                }
+            }
+        
+        case 'obsession':
+            switch (curStep)
+            {
+                case 480:
+
+                    FlxTween.tween(FlxG.camera, {zoom: 1.5}, (Conductor.stepCrochet / 14) / Conductor.playbackSpeed, {ease: FlxEase.linear});
+
+                        staticshock.visible = true;
+                        staticshock.alpha = 0;
+                        FlxTween.tween(staticshock, {alpha: 1}, (Conductor.stepCrochet / 14) / Conductor.playbackSpeed, {
+                            ease: FlxEase.linear,
+                            onComplete: function(tween:FlxTween)
+                            {
+                                staticshock.alpha = 0.1;
+                            }
+                        });
+                case 544:
+
+                    add(whiteflash);
+                    add(blackScreen);
+                    FlxG.sound.play(Paths.sound('Lights_Shut_off'), 0.7);
+                case 552:
+                    // shit gets serious
+                    yuriGoCrazy();
+                case 568:
+                    remove(blackScreen);
+                    FlxTween.tween(whiteflash, {alpha: 0.15}, 0.75, {ease: FlxEase.sineOut});
+                case 848:
+                    blackScreentwo.visible = true;
+            }
+        }
+    }
+function beatHit(curBeat){
+    switch (curSong)
+    { 
+       case 'my sweets':
+        {
+            switch (curBeat)
+            {
+                case 260:
+                    dad.playAnim('hmmph');
+            }
+        }
+        case 'baka':
+        {
+        switch (curBeat)
+            {
+            case 16:
+
+                    bakaOverlay.visible = true;
+                    FlxTween.tween(bakaOverlay, {alpha: 1}, 2, {ease: FlxEase.sineIn});
+            case 32:
+                if (bakaOverlay != null) {
+                    bakaOverlay.animation.play('party rock is', true);
+                    defaultCamZoom = 1.2;
+                    camGame.shake(0.002, 2);
+                }
+                else
+                {
+                    whiteflash.alpha = 1;
+                    FlxTween.tween(whiteflash, {alpha: 0.001}, 0.2, {ease: FlxEase.sineOut});
+                }
+            case 40:
+                cancelCameraMove = true;
+                camFollow.setPosition(boyfriend.getMidpoint().x - 100, boyfriend.getMidpoint().y - 100);
+            case 48:
+                cancelCameraMove = false;
+                FlxTween.tween(FlxG.camera, {zoom: 0.95}, 1, {
+                    ease: FlxEase.sineOut,
+                    onComplete: function(tween:FlxTween)
+                    {
+                        defaultCamZoom = 0.95;
+                    }
+                });
+            case 112 | 264:
+                if (bakaOverlay != null) FlxTween.tween(bakaOverlay, {alpha: 0}, 2, {ease: FlxEase.sineOut});
+            case 144:
+                if (bakaOverlay != null)
+                {
+                    bakaOverlay.animation.play('normal', true);
+                    FlxTween.tween(bakaOverlay, {alpha: 1}, 2, {ease: FlxEase.sineIn});
                 }
             }
         }
-}
+
+    case 'deep breaths':
+        switch (curBeat)
+        {
+            case 104:
+                sparkleBG.visible = true;
+                add(sparkleFG);
+                add(pinkOverlay);
+            case 200:
+                FlxTween.tween(sparkleBG, {alpha: 0}, 1, {ease: FlxEase.sineOut});
+                FlxTween.tween(sparkleFG, {alpha: 0}, 1, {ease: FlxEase.sineOut});
+                FlxTween.tween(pinkOverlay, {alpha: 0}, 1, {ease: FlxEase.sineOut});
+            case 232:
+                sparkleBG.alpha = 1;
+                sparkleFG.alpha = 1;
+                pinkOverlay.alpha = 0.2;
+            case 288:
+                FlxTween.tween(sparkleBG, {alpha: 0}, 2, {ease: FlxEase.sineOut});
+                FlxTween.tween(sparkleFG, {alpha: 0}, 2, {ease: FlxEase.sineOut});
+                FlxTween.tween(pinkOverlay, {alpha: 0}, 2, {ease: FlxEase.sineOut});
+        }
+     } 
+   }
+ 
+
 function sayonara()
 	{
         camZooming = false;
@@ -294,3 +468,29 @@ function sayonara()
 			vignette.alpha = 0.2;
 		}
 	}
+
+    function yuriGoCrazy()
+        {
+            // yooo she gon da crazyy
+            yuriGoneCrazy = true;
+    
+            // visual setup
+            defaultCamZoom = 1.4;
+            camZooming = true;
+            cancelCameraMove = true;
+            blackScreenBG.alpha = 0.8;
+            remove(deskfront);
+    
+            // character setup
+            boyfriend.x = dad.x + 250;
+            necksnap = true;
+            // vignette + camera setup
+            if (vignette != null)
+            {
+                add(vignette);
+                vignette.alpha = 0.6;
+            }
+    
+            camFollow.setPosition((dad.getMidpoint().x + boyfriend.getMidpoint().x) / 1.8, dad.getMidpoint().y - 350);
+        }
+    

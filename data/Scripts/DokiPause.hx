@@ -93,8 +93,8 @@ function create(event){
 
     menuItems = pauseOG;
 
-    var pauseImg:String = PlayState.SONG.meta.pause;
-    pauseArt = new FlxSprite(FlxG.width, 0).loadGraphic(Paths.image('pause/' + pauseImg));
+
+    pauseArt = new FlxSprite(FlxG.width, 0).loadGraphic(Paths.image('pause/' + PlayState.SONG.meta.pause));
     pauseArt.antialiasing = Options.Antialiasing;
     pauseArt.cameras = [pauseCam];
     add(pauseArt);

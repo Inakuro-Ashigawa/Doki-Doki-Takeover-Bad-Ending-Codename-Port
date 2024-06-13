@@ -1,0 +1,17 @@
+{
+	"beatsPerMeasure": 4,
+	"opponentModeAllowed": false,
+	"coopAllowed": false,
+	"stepsPerBeat": 4,
+	"bpm": 110,
+	"difficulties": [
+		"hard"
+	],
+	"needsVoices": true,
+	"parsedColor": -850177,
+	"displayName": "Baka",
+	"pause": "natsuki",
+	"icon": "Natsuki",
+	"name": "Baka",
+	"color": "#F306FF"
+}
