@@ -30,11 +30,11 @@ var gradient:FlxSprite;
 var danceLeft:Bool = false;
 var titleText:FlxSprite;
 
-function create(){
-    //curWacky = FlxG.random.getObject(getIntroTextShit());
+function setColorUniform(obj:Dynamic, color:Int) {
+    obj.value = [(color >> 16 & 0xFF) / 255, (color >> 8 & 0xFF) / 255, (color & 0xFF) / 255];
+}
 
-    ColorMaskShader(0xFFFDEBF7,0xFFFDDBF1);
-    //ColorMaskShader.color2 = 0xFFFDDBF1;
+function create(){
     startIntro();
 }
 function startIntro()
@@ -49,12 +49,15 @@ function startIntro()
 		backdrop = new FlxBackdrop(Paths.image('scrollingBG'));
 		backdrop.velocity.set(-10, 0);
 		backdrop.antialiasing = Options.Antialiasing;
+		backdrop.shader = new CustomShader("ColorMaskShader");
+		setColorUniform(backdrop.shader.data.color1, 0xFFFDEBF7);
+		setColorUniform(backdrop.shader.data.color2, 0xFFFDDBF1);
 		add(backdrop);
 
 		creditsBG = new FlxBackdrop(Paths.image('credits/pocBackground'));
 		creditsBG.velocity.set(-50, 0);
 		creditsBG.antialiasing = Options.Antialiasing;
-		//add(creditsBG);
+		add(creditsBG);
 
 		var scanline:FlxBackdrop = new FlxBackdrop(Paths.image('credits/scanlines'));
 		scanline.velocity.set(0, 20);
@@ -144,13 +147,15 @@ function startIntro()
 			dokiArray.push(['ProtagPopup', 770, 170]);
 
 		// The selected doki
-        var selected:String = dokiArray[FlxG.random.int(0, dokiArray.length - 1)];
+        var selected:String = FlxG.random.int(0, dokiArray.length - 1);
 
 		// selected = 0 // Forced doki for testing
 
 		var dokiIndex:String = dokiArray[selected][0];
 		bottom = dokiArray[selected][1];
 		top = dokiArray[selected][2];
+
+		trace(dokiArray[selected][0]);
 
 		dokiApp.setPosition(0, bottom);
 		dokiApp.frames = Paths.getSparrowAtlas('intro/' + dokiIndex);
@@ -214,8 +219,6 @@ function beatHit()
 		{
 			case 1:
 				createCoolText(['Team TBD']);
-            case 2:
-                addMoreText('and Inakuro');
 			case 3:
 				//addMoreText('presents');
 				tbdSpr.visible = true;
@@ -289,9 +292,11 @@ function beatHit()
 			remove(tbdSpr);
 			remove(doki);
 			remove(dokiApp);
+			deleteCoolText();
 
 			FlxG.camera.flash(FlxColor.WHITE, 4);
 			remove(credGroup);
+			remove(textGroup);
 			skippedIntro = true;
 		}
 	}

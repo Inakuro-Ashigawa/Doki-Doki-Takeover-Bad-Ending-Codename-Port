@@ -1,0 +1,16 @@
+{
+	"beatsPerMeasure": 4,
+	"opponentModeAllowed": false,
+	"coopAllowed": false,
+	"stepsPerBeat": 4,
+	"bpm": 173,
+	"difficulties": [
+		"hard"
+	],
+	"needsVoices": true,
+	"parsedColor": -15414807,
+	"displayName": "Our Reality",
+	"icon": "Sayori",
+	"name": "Our-Reality",
+	"color": "#14C9E9"
+}

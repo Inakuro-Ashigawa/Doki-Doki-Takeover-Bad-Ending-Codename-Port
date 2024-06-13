@@ -1,4 +1,4 @@
 function onSongEnd() {
-  if (!isStoryMode) return;
-  SaveData.beatPrologue = true;
+  if (!PlayState.isStoryMode) return;
+  FlxG.save.data.beatPrologue = true;
 }

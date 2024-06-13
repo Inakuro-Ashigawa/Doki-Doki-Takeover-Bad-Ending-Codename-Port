@@ -59,6 +59,11 @@ var menuCharJSON = {
 
 // reading data is the same way
 
+function setColorUniform(obj:Dynamic, color:Int) {
+    obj.value = [(color >> 16 & 0xFF) / 255, (color >> 8 & 0xFF) / 255, (color & 0xFF) / 255];
+}
+
+
 function create(){
 
 /*
@@ -70,6 +75,9 @@ function create(){
     backdrop = new FlxBackdrop(Paths.image('scrollingBG'));
     backdrop.velocity.set(-10, 0);
     backdrop.antialiasing = Options.Antialiasing;
+    backdrop.shader = new CustomShader("ColorMaskShader");
+    setColorUniform(backdrop.shader.data.color1, 0xFFFDEBF7);
+    setColorUniform(backdrop.shader.data.color2, 0xFFFDDBF1);
     add(backdrop);
     
     var menuString:String = Assets.getText(Paths.json('menuCharacters'));

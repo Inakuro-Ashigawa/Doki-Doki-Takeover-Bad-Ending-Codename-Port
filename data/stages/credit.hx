@@ -2,7 +2,6 @@ import flixel.addons.display.FlxBackdrop;
 import flixel.group.FlxGroup.FlxTypedGroup;
 import StringTools;
 public var disableCamMove:Bool = false;
-var ColorMaskShader = new CustomShader('ColorMaskShader');
 var FishEyeShader  = new CustomShader('fisheye');
 var galleryData:Array<String> = CoolUtil.coolTextFile(Paths.txt('stickerData'));
 var stickerSprites:FlxTypedGroup<FlxSprite>;
@@ -12,6 +11,9 @@ var stickerData:Array<String> = [];
 var boxY:Int = 10;
 
 
+function setColorUniform(obj:Dynamic, color:Int) {
+    obj.value = [(color >> 16 & 0xFF) / 255, (color >> 8 & 0xFF) / 255, (color & 0xFF) / 255];
+}
 
 function create(){
 
@@ -32,8 +34,9 @@ function create(){
     dokiBackdrop.scrollFactor.set(0.1, 0.1);
     dokiBackdrop.velocity.set(-10, 0);
     dokiBackdrop.alpha = 0.3;
-    //dokiBackdrop.shader = ColorMaskShader;
-    //ColorMaskShader = [0xFFFDFFFF, 0xFFFDDBF1];
+    dokiBackdrop.shader = new CustomShader("ColorMaskShader");
+    setColorUniform(dokiBackdrop.shader.data.color1, 0xFFFDEBF7);
+    setColorUniform(dokiBackdrop.shader.data.color2, 0xFFFDDBF1);
     add(dokiBackdrop);
 
     creditsBG = new FlxBackdrop(Paths.image('credits/pocBackground'));

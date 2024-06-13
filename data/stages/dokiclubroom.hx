@@ -185,9 +185,8 @@ if (curSong.toLowerCase() == 'neet')
                 bgDokis.add(monika);
 
             if (!boyfriend.curCharacter == 'sayori' && !dad.curCharacter == 'sayori')
-                {
-                    
-                        bgDokis.add(sayori);
+                {  
+                  bgDokis.add(sayori);
                 }
             if (!boyfriend.curCharacter == 'natsuki' && !dad.curCharacter == 'natsuki')
                 bgDokis.add(natsuki);

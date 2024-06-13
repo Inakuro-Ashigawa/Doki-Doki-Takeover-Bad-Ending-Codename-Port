@@ -1,4 +1,3 @@
-import hxvlc.flixel.FlxVideo;
 import hxvlc.flixel.FlxVideoSprite;
 import flixel.addons.display.FlxBackdrop;
 import flixel.group.FlxGroup.FlxTypedGroup;
@@ -32,7 +31,7 @@ function create(){
     camOverlay.bgColor = FlxColor.TRANSPARENT;
 
 
-    rainBG.load(Assets.getPath(Paths.file("videos/rain.mp4")));  
+    rainBG.load(Assets.getPath(Paths.file("videos/rain.mp4"),['input-repeat=65535']));  
     rainBG.scrollFactor.set();
     rainBG.setGraphicSize(Std.int(rainBG.width / defaultCamZoom));
     rainBG.updateHitbox();
@@ -78,7 +77,7 @@ function create(){
     extractPopup.alpha = 0.00000001;
     add(extractPopup);
 
-    testVMLE.load(Assets.getPath(Paths.file("videos/testVM.mp4")));  
+    testVMLE.load(Assets.getPath(Paths.file("videos/testVM.mp4"),['input-repeat=65535']));  
     testVMLE.scrollFactor.set();
     testVMLE.setGraphicSize(Std.int(testVMLE.width / defaultCamZoom));
     testVMLE.updateHitbox();
@@ -187,7 +186,7 @@ function create(){
     infoBG2.alpha = 0.00000001;
     add(infoBG2);
 
-    crackBG.load(Assets.getPath(Paths.file("videos/crackBG.mp4")));  
+    crackBG.load(Assets.getPath(Paths.file("videos/crackBG.mp4"),['input-repeat=65535']));  
     //crackBG.scrollFactor.set(0.3, 0.3);
     crackBG.setGraphicSize(Std.int(crackBG.width / defaultCamZoom));
     crackBG.updateHitbox();
@@ -294,19 +293,24 @@ function onSongStart(){
     camFollow.y = 300;
 }
 function postUpdate(elapsed){
+    for (i in cpuStrums.members) 
+    i.alpha = 0.00001;
+
     fishy.warp = .4;
     fishy.scan = .4;
 
     glitch2.intensityChromatic = .5;
-    
+
 }
 function postCreate(){
 for (i in playerStrums.members) 
  i.alpha = 0.00001;
-for (i in cpuStrums.members) 
-    i.alpha = 0.00001;
 add(grpPopups);
 add(boyfriend);
+
+healthBar.createFilledBar(FlxColor.fromRGB(255, 255, 255), FlxColor.fromRGB(0, 0, 0));
+healthBar.updateFilledBar();
+healthBar.updateBar();
 
 dad.alpha = 0.0001;
 gf.alpha = 0.0001;
@@ -369,7 +373,7 @@ function libShader(show:Bool = true, old:Bool = false){
         else
         {
 
-            FlxG.camera.addShader(fishy);
+            //FlxG.camera.addShader(fishy);
             FlxG.camera.removeShader(glitch2);
             camGame2.removeShader(fishy);
         }
@@ -429,9 +433,9 @@ function stepHit(curStep)
 
             testVMLE.alpha = 1;
         case 160 | 224 | 288 | 480 | 576 | 688 | 800 | 896 | 1024:
-            libPopup(526, FlxG.random.int(88, 442), FlxG.random.int(0.9, 1.1), FlxG.random.int(0, 2));
-            libPopup(808, FlxG.random.int(88, 442), FlxG.random.int(0.9, 1.1), FlxG.random.int(0, 2));
-            libPopup(184, FlxG.random.int(88, 442), FlxG.random.int(0.9, 1.1), FlxG.random.int(0, 2));
+            libPopup(526, FlxG.random.int(88, 442), FlxG.random.int(0.9, 1.1), 2);
+            libPopup(808, FlxG.random.int(88, 442), FlxG.random.int(0.9, 1.1), 1);
+            libPopup(184, FlxG.random.int(88, 442), FlxG.random.int(0.9, 1.1), 6);
         case 352:
             libiWindow.alpha = 1;
             libiWindow.scale.set();
@@ -482,7 +486,6 @@ function stepHit(curStep)
             grpPopups.visible = true;
             libAwaken.alpha = 0.00000001;
             camGame2.fade(FlxColor.WHITE, 0.2, true);
-            //addcharacter('ghost-sketch', 0);
             boyfriend.cameras = [camGame2];
 
             remove(grpPopups);
@@ -513,7 +516,6 @@ function stepHit(curStep)
             staticshock.alpha = 1;
             add(staticshock);
         case 1728:
-
             FlxG.camera.addShader(fishy);
             eyeBG.alpha = 1;
             insert(members.indexOf(boyfriend) + 1, eyeShadow);

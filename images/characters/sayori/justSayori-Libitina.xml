@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="justSayori.png">
+<SubTexture name="justSayori idle0000" x="0" y="0" width="398" height="929" frameX="-167" frameY="-314" frameWidth="720" frameHeight="1280" />
+<SubTexture name="justSayori idle0001" x="398" y="0" width="398" height="935" frameX="-167" frameY="-308" frameWidth="720" frameHeight="1280" />
+<SubTexture name="justSayori idle0002" x="796" y="0" width="398" height="942" frameX="-167" frameY="-302" frameWidth="720" frameHeight="1280" />
+<SubTexture name="justSayori idle0003" x="1194" y="0" width="398" height="945" frameX="-167" frameY="-299" frameWidth="720" frameHeight="1280" />
+<SubTexture name="justSayori idle0004" x="1592" y="0" width="398" height="948" frameX="-167" frameY="-296" frameWidth="720" frameHeight="1280" />
+<SubTexture name="justSayori singDOWN0000" x="1990" y="0" width="398" height="891" frameX="-166" frameY="-354" frameWidth="720" frameHeight="1280" />
+<SubTexture name="justSayori singDOWN0001" x="2388" y="0" width="398" height="900" frameX="-166" frameY="-346" frameWidth="720" frameHeight="1280" />
+<SubTexture name="justSayori singDOWN0002" x="0" y="948" width="398" height="906" frameX="-166" frameY="-339" frameWidth="720" frameHeight="1280" />
+<SubTexture name="justSayori singLEFT0000" x="398" y="948" width="407" height="947" frameX="-127" frameY="-298" frameWidth="720" frameHeight="1280" />
+<SubTexture name="justSayori singLEFT0001" x="805" y="948" width="405" height="950" frameX="-135" frameY="-295" frameWidth="720" frameHeight="1280" />
+<SubTexture name="justSayori singLEFT0002" x="1210" y="948" width="402" height="952" frameX="-136" frameY="-293" frameWidth="720" frameHeight="1280" />
+<SubTexture name="justSayori singUP0000" x="1612" y="948" width="398" height="984" frameX="-168" frameY="-263" frameWidth="720" frameHeight="1280" />
+<SubTexture name="justSayori singUP0001" x="2010" y="948" width="398" height="978" frameX="-168" frameY="-268" frameWidth="720" frameHeight="1280" />
+<SubTexture name="justSayori singUP0002" x="2408" y="948" width="398" height="972" frameX="-168" frameY="-273" frameWidth="720" frameHeight="1280" />
+<SubTexture name="justSayori singRIGHT0000" x="0" y="1932" width="401" height="957" frameX="-181" frameY="-288" frameWidth="720" frameHeight="1280" />
+<SubTexture name="justSayori singRIGHT0001" x="401" y="1932" width="401" height="955" frameX="-180" frameY="-290" frameWidth="720" frameHeight="1280" />
+<SubTexture name="justSayori singRIGHT0002" x="802" y="1932" width="400" height="954" frameX="-180" frameY="-291" frameWidth="720" frameHeight="1280" />
+<SubTexture name="justSayori glitchDOWN0000" x="1202" y="1932" width="526" height="884" frameX="-107" frameY="-360" frameWidth="720" frameHeight="1280" />
+<SubTexture name="justSayori glitchDOWN0001" x="1728" y="1932" width="487" height="897" frameX="-129" frameY="-348" frameWidth="720" frameHeight="1280" />
+<SubTexture name="justSayori glitchDOWN0002" x="0" y="948" width="398" height="906" frameX="-166" frameY="-339" frameWidth="720" frameHeight="1280" />
+<SubTexture name="justSayori glitchLEFT0000" x="2215" y="1932" width="507" height="947" frameX="-10" frameY="-298" frameWidth="720" frameHeight="1280" />
+<SubTexture name="justSayori glitchLEFT0001" x="2722" y="1932" width="414" height="944" frameX="-111" frameY="-301" frameWidth="720" frameHeight="1280" />
+<SubTexture name="justSayori glitchLEFT0002" x="1210" y="948" width="402" height="952" frameX="-136" frameY="-293" frameWidth="720" frameHeight="1280" />
+<SubTexture name="justSayori glitchUP0000" x="0" y="2889" width="646" height="1007" frameX="-35" frameY="-238" frameWidth="720" frameHeight="1280" />
+<SubTexture name="justSayori glitchUP0001" x="646" y="2889" width="463" height="986" frameX="-157" frameY="-259" frameWidth="720" frameHeight="1280" />
+<SubTexture name="justSayori glitchUP0002" x="2408" y="948" width="398" height="972" frameX="-168" frameY="-273" frameWidth="720" frameHeight="1280" />
+<SubTexture name="justSayori glitchRIGHT0000" x="1109" y="2889" width="518" height="983" frameX="-151" frameY="-262" frameWidth="720" frameHeight="1280" />
+<SubTexture name="justSayori glitchRIGHT0001" x="1627" y="2889" width="413" height="971" frameX="-197" frameY="-274" frameWidth="720" frameHeight="1280" />
+<SubTexture name="justSayori glitchRIGHT0002" x="802" y="1932" width="400" height="954" frameX="-180" frameY="-291" frameWidth="720" frameHeight="1280" />
+</TextureAtlas>
