@@ -32,7 +32,7 @@ var curSelected:Int = 0;
 var show:String = "";
 var menuItems:FlxTypedGroup;
 var menuItems = new FlxSpriteGroup();
-var optionShit:Array<String> = ['story mode', 'freeplay', 'gallery', 'credits', 'options', 'exit'];
+var optionShit:Array<String> = ['Story Mode', 'Freeplay', 'Gallery', 'Credits', 'Options', 'Exit'];
 var firstStart:Bool = true;
 var acceptInput:Bool = true;
 var logo:FlxSprite;
@@ -304,21 +304,21 @@ function goToState()
 
         switch (daChoice)
         {
-            case 'story mode':
+            case 'Story Mode':
                 FlxG.switchState(new StoryMenuState());
                 trace("Story Menu Selected");
-            case 'freeplay':
+            case 'Freeplay':
                 FlxG.switchState(new FreeplayState());
                 trace("Freeplay Menu Selected");
-            case 'credits':
+            case 'Credits':
                 FlxG.switchState(new CreditsState());
                 trace("Credits Menu Selected");
-            case 'gallery':
+            case 'Gallery':
                 FlxG.switchState(new ModState("GalleryArtState"));
                 trace("La Galeria Selected");
-            case 'options':
+            case 'Options':
                 FlxG.switchState(new OptionsMenu());
-            case 'exit':
+            case 'Exit':
                 openSubState(new CloseGameSubState());
         }
     }

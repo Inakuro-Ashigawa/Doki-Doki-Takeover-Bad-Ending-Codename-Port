@@ -189,10 +189,10 @@ function update(elapsed:Float){
 			else if (FlxG.keys.pressed.L)
 				txtWeekTitle.x += 10;
 		}
-    if (controls.LEFT_P)
-        changeItem(4);
-    if (controls.RIGHT_P)
-        changeItem(-4);
+    if (controls.LEFT_P)  changeItem(4);
+    if (controls.RIGHT_P) changeItem(-4);
+    if (controls.DOWN_P)  changeItem(2);
+    if (controls.UP_P) changeItem(-2);
 
     if (!selectedSomethin && acceptInput)
 		{
