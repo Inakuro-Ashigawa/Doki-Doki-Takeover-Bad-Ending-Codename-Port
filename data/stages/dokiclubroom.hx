@@ -10,7 +10,7 @@ var blackScreenBG:FlxSprite;
 var blackScreentwo:FlxSprite;
 var isFestival:Bool = false;
 var cancelCameraMove:Bool = false;
-var necksnap:Bool = false;
+
 
 function onCameraMove(e) if(cancelCameraMove) e.cancel();
 
@@ -199,32 +199,28 @@ if (curSong.toLowerCase() == 'neet')
         {
             if (isFestival)
             {
-                var club:Array<BGSprite> = [monika, sayori, natsuki, protag, yuri];
+                var club:Array= [monika, sayori, natsuki, protag, yuri];
                 for (member in club)
                     member.color = 0x828282;
             }
 
-            if (!boyfriend.curCharacter == 'monika' && !dad.curCharacter == 'monika' && (curSong.toLowerCase() == 'neet' || curStage != 'dokiclubroom'))
-                bgDokis.add(monika);
-
-            if (!boyfriend.curCharacter == 'sayori' && !dad.curCharacter == 'sayori')
-                {  
-                  bgDokis.add(sayori);
-                }
-            if (!boyfriend.curCharacter == 'natsuki' && !dad.curCharacter == 'natsuki')
-                bgDokis.add(natsuki);
-
-            if (!boyfriend.curCharacter == 'protag' && !dad.curCharacter == 'protag')
-                bgDokis.add(protag);
-
-            if (!boyfriend.curCharacter == 'yuri'  && !dad.curCharacter == 'yuri')
-                bgDokis.add(yuri);
+        if (monikaBG){
+            bgDokis.add(monika);
         }
-        else if (curSong.toLowerCase() == 'obsession' && PlayState.isStoryMode)
-        {
+        if (sayoriBG)
+        {  
             bgDokis.add(sayori);
+        }
+        if (natsukiBG){
             bgDokis.add(natsuki);
         }
+        if (protagBG){
+            bgDokis.add(protag);
+        }
+       if (yuriBG)
+            bgDokis.add(yuri);
+
+    }
 
         switch (dad.curCharacter)
         {
@@ -380,6 +376,17 @@ function stepHit(curStep){
         }
     }
 function beatHit(curBeat){
+    
+if (curBeat % 2 == 0)
+    {
+            if (monika != null)
+                monika.animation.play('bop');
+            if (protag != null)
+                protag.animation.play('bop');
+            sayori.animation.play('bop');
+            natsuki.animation.play('bop');
+            yuri.animation.play('bop');
+    }
     switch (curSong)
     { 
        case 'my sweets':

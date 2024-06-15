@@ -1,6 +1,12 @@
 var option = FlxG.save.data;
+public var protagBG:Bool = false;
+public var natsukiBG:Bool = false;
+public var monikaBG:Bool = false;
+public var yuriBG:Bool = false;
+public var sayoriBG:Bool = false;
+public var necksnap:Bool = false;
 
-function postCreate(){
+function create(){
 }
 function onCountdown(event) {
 if (option.gfCountdown){

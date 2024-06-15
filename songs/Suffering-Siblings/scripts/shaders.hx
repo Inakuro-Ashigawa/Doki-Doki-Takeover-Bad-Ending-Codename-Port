@@ -7,7 +7,7 @@ static var bloom = new CustomShader('bloom');// bloom shader
 var singDir = ["LEFT", "DOWN", "UP", "RIGHT"];
 
 var dadCamZoom:Int = 0.8;
-var bfCamZoom:Int = 1.5;
+var bfCamZoom:Int = 1.2;
 var defaultOppX = [];
 var defaultPlayX = [];
 var data:Map<Int, {lastNote:{time:Float, id:Int}}> = [];

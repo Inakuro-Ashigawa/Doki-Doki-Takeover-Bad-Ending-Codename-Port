@@ -2,8 +2,8 @@ import funkin.backend.utils.WindowUtils;
 import openfl.Lib;
 import lime.graphics.Image;
 
-public var SaveData = FlxG.save.data;
-//public var isStoryMode:Bool = false;
+public static var SaveData = FlxG.save.data;
+
 
 static var redirectStates:Map<FlxState, String> = [
     TitleState => "Doki/DokiTitle",
@@ -24,6 +24,17 @@ function update(elapsed){
 	cursorShit = new FunkinSprite().loadGraphic(Paths.image("cursor"));
 	FlxG.mouse.load(cursorShit.pixels);
 }
+if (FlxG.keys.pressed.M)
+    trace('Story Mode Progress Reset!');
+    FlxG.save.data.beatPrologue = null;
+    FlxG.save.data.beatSayori = null;
+    FlxG.save.data.beatNatsuki = null;
+    FlxG.save.data.beatYuri = null;
+    FlxG.save.data.beatMonika = null;
+    FlxG.save.data.beatFestival = null;
+    FlxG.save.data.beatEncore = null;
+    FlxG.save.data.beatProtag = null;
+
 function new() {
     if (FlxG.save.data.beatPrologue == null)  FlxG.save.data.beatPrologue = false;
     if (FlxG.save.data.beatSayori == null)  FlxG.save.data.beatSayori = false;

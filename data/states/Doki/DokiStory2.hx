@@ -75,6 +75,14 @@ function setColorUniform(obj:Dynamic, color:Int) {
 }
 function create(){
 
+    FlxG.save.data.beatPrologue = false;
+    FlxG.save.data.beatSayori = false;
+    FlxG.save.data.beatNatsuki = false;
+    FlxG.save.data.beatYuri = false;
+    FlxG.save.data.beatMonika = false;
+    FlxG.save.data.beatFestival = false;
+    FlxG.save.data.beatEncore = false;
+    FlxG.save.data.beatProtag = false;
 
     allBeat = FlxG.save.data.checkAllSongsBeaten;
 
@@ -82,9 +90,8 @@ function create(){
     weekNames.push('week' + i, 'story');
 
 
-
-
-    persistentUpdate = persistentDraw = true;
+    persistentUpdate = false;
+    persistentDraw = true;
 
 
     backdrop = new FlxBackdrop(Paths.image('scrollingBG'));
@@ -189,6 +196,7 @@ function update(elapsed:Float){
 			else if (FlxG.keys.pressed.L)
 				txtWeekTitle.x += 10;
 		}
+
     if (controls.LEFT_P)
         changeItem(4);
     if (controls.RIGHT_P)
@@ -216,7 +224,8 @@ function selectThing()
 		if (curSelected == 8 && icons[curSelected][1])
 		{
 			FlxG.sound.play(Paths.sound('confirmMenu'));
-			openSubState(new DokiSideStory());
+            openSubState(new ModSubState('Doki/SubStates/DokiSideStory'));
+
 		}
 		else if (icons[curSelected][1])
 		{
