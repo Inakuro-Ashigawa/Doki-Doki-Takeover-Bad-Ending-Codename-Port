@@ -61,7 +61,7 @@ function create(){
 Pixle = true;
 
 space = new FlxBackdrop(Paths.image('weeb/FinaleBG_1'));
-space.scrollFactor.set(0.1, 0.1);
+// space.scrollFactor.set(0.1, 0.1);
 space.velocity.set(-10, 0);
 space.scale.set(1.65, 1.65);
 space.alpha = 0.01;
@@ -69,7 +69,9 @@ add(space);
 
 
 bg.antialiasing = false;
-bg.scrollFactor.set(0.4, 0.6);
+bg.x = 140;
+bg.y = -100;
+// bg.scrollFactor.set(0.4, 0.6);
 bg.scale.set(2.3, 2.3);
 bg.alpha = 0.01;
 add(bg);
@@ -84,7 +86,7 @@ add(stageFront);
 evilbg = new FlxSprite(400,100);
 evilbg.frames = Paths.getSparrowAtlas('weeb/animatedEvilSchool');
 evilbg.antialiasing = Options.antialiasing;
-evilbg.scrollFactor.set(.8,.9);
+// evilbg.scrollFactor.set(.8,.9);
 evilbg.antialiasing = false;
 evilbg.animation.addByPrefix('idle', 'background 2 instance 1', 24, true);
 evilbg.animation.play('idle');
@@ -98,6 +100,7 @@ remove(dad);
 blackScreen = new FlxSprite(-FlxG.width * FlxG.camera.zoom,
     -FlxG.height * FlxG.camera.zoom).makeGraphic(FlxG.width * 3, FlxG.height * 3, FlxColor.BLACK);
 blackScreen.scrollFactor.set();
+
 
 }
 
@@ -177,7 +180,8 @@ function evilswap(Int)
                 boyfriend.x = 1000;
                 boyfriend.y = 500;
 			case 1:
-				FlxTween.cancelTweensOf(redStatic);
+			
+             	FlxTween.cancelTweensOf(redStatic);
 				redStatic.alpha = 1;
 				FlxTween.tween(redStatic, {alpha: 0.0001}, 0.2, {ease: FlxEase.linear, onComplete: function(twn:FlxTween){}});
 
