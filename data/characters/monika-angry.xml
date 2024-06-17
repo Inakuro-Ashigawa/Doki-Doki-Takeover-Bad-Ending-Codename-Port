@@ -1,5 +1,5 @@
 <!DOCTYPE codename-engine-character>
-<character x="95" icon="monika-angrynew" y="131" isGF="false" scale="6" color="#C9CEFF" isPlayer="false" sprite="Monika_Finale_New">
+<character x="95" icon="monika-angrynew" y="131" antialiasing="false" isGF="false" scale="6" color="#C9CEFF" isPlayer="false" sprite="Monika_Finale_New">
 	<anim x="0" loop="false" y="0" fps="24" anim="Monika_Idle" name="idle"/>
 	<anim x="0" loop="false" y="0" fps="24" anim="Monika_singUP0" name="singUP"/>
 	<anim x="0" loop="false" y="-1" fps="24" anim="Monika_singRIGHT0" name="singRIGHT"/>
