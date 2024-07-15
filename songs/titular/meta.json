@@ -1,0 +1,14 @@
+{
+    "beatsPerMeasure": 4,
+	"opponentModeAllowed": false,
+	"coopAllowed": false,
+	"stepsPerBeat": 4,
+	"bpm": 180,
+    "name": "titular",
+    "needsVoices": true,
+	"parsedColor": -1,
+	"displayName": "Titular (MC Mix)",
+    "artist": "HighPoweredKeyz / EthanTheDoodler",
+    "icon": "protag",
+    "pause": "protag"
+}

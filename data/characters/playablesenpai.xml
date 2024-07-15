@@ -1,14 +1,14 @@
 <!DOCTYPE codename-engine-character>
-<character x="-50" icon="senpai" camx="-60" y="-230" isGF="false" scale="6" camy="100" color="#FFAA6F" flipX="true" isPlayer="true" sprite="playablesenpai">
+<character x="-50" icon="senpai" camx="-60" y="-230" isGF="false" scale="6" camy="100" color="#FFAA6F" flipX="true" isPlayer="true" antialiasing="false" sprite="playablesenpai">
 	<anim x="0" loop="false" y="0" fps="24" anim="Senpai Idle1" name="danceLeft"/>
 	<anim x="0" loop="false" y="0" fps="24" anim="Senpai Idle2" name="danceRight"/>
 	<anim x="0" loop="false" y="6" fps="24" anim="SENPAI UP NOTE" name="singUP"/>
-	<anim x="1" loop="false" y="0" fps="24" anim="SENPAI RIGHT NOTE" name="singRIGHT"/>
-	<anim x="5" loop="false" y="0" fps="24" anim="SENPAI LEFT NOTE" name="singLEFT"/>
+	<anim x="5" loop="false" y="0" fps="24" anim="SENPAI RIGHT NOTE" name="singRIGHT"/>
+	<anim x="1" loop="false" y="0" fps="24" anim="SENPAI LEFT NOTE" name="singLEFT"/>
 	<anim x="2" loop="false" y="0" fps="24" anim="SENPAI DOWN NOTE" name="singDOWN"/>
 	<anim x="1" loop="false" y="6" fps="24" anim="miss Senpai UP NOTE" name="singUPmiss"/>
-	<anim x="0" loop="false" y="0" fps="24" anim="miss Senpai RIGHT NOTE" name="singRIGHTmiss"/>
-	<anim x="5" loop="false" y="1" fps="24" anim="miss Senpai LEFT NOTE" name="singLEFTmiss"/>
+	<anim x="5" loop="false" y="1" fps="24" anim="miss Senpai RIGHT NOTE" name="singRIGHTmiss"/>
+	<anim x="0" loop="false" y="0" fps="24" anim="miss Senpai LEFT NOTE" name="singLEFTmiss"/>
 	<anim x="2" loop="false" y="1" fps="24" anim="miss Senpai DOWN NOTE" name="singDOWNmiss"/>
 	<anim x="4" loop="false" y="-25" fps="24" anim="BF Dies pixel" name="firstDeath"/>
 	<anim x="4" loop="true" y="-25" fps="24" anim="senpai retry" name="deathLoop"/>
