@@ -1,4 +1,3 @@
-import Takeover.BGSprite;
 import flixel.group.FlxGroup.FlxTypedGroup;
 import flixel.addons.display.FlxBackdrop;
 var bgDokis:FlxTypedGroup<FlxSprite>;
@@ -9,6 +8,12 @@ var blackScreen:FlxSprite;
 var blackScreenBG:FlxSprite;
 var blackScreentwo:FlxSprite;
 var isFestival:Bool = false;
+var protagBG:Bool = false;
+var natsukiBG:Bool = false;
+var monikaBG:Bool = false;
+var yuriBG:Bool = false;
+var sayoriBG:Bool = false;
+var necksnap:Bool = false;
 var cancelCameraMove:Bool = false;
 
 
@@ -120,6 +125,7 @@ function create(){
             pinkOverlay = new FlxSprite(-FlxG.width * FlxG.camera.zoom, -FlxG.height * FlxG.camera.zoom).makeGraphic(FlxG.width * 3, FlxG.height * 3, 0xFFF281F2);
             pinkOverlay.alpha = 0.2;
             pinkOverlay.scrollFactor.set();
+
         }
         case 'constricted':
         {
@@ -142,56 +148,56 @@ function create(){
             zippergoo.alpha = 0.001;
         }
 }
-clubmainlight = new FlxSprite(-700, -520).loadGraphic(Paths.image('clubroom/clublights'));
-clubmainlight.scrollFactor.set(1, 1);
-clubmainlight.setGraphicSize(Std.int(clubmainlight.width * 1.6));
-clubmainlight.updateHitbox();
-add(clubmainlight);
+    clubmainlight = new FlxSprite(-700, -520).loadGraphic(Paths.image('clubroom/clublights'));
+    clubmainlight.scrollFactor.set(1, 1);
+    clubmainlight.setGraphicSize(Std.int(clubmainlight.width * 1.6));
+    clubmainlight.updateHitbox();
+    add(clubmainlight);
 
-deskfront = new FlxSprite(-700, -520).loadGraphic(Paths.image('clubroom/DesksFront'));
-deskfront.scrollFactor.set( 1.3, 1);
-deskfront.setGraphicSize(Std.int(deskfront.width * 1.6));
-deskfront.updateHitbox();
+    deskfront = new FlxSprite(-700, -520).loadGraphic(Paths.image('clubroom/DesksFront'));
+    deskfront.scrollFactor.set( 1.3, 1);
+    deskfront.setGraphicSize(Std.int(deskfront.width * 1.6));
+    deskfront.updateHitbox();
 
-closet = new FlxSprite(-700, -520).loadGraphic(Paths.image('clubroom/DDLCfarbg'));
-closet.scrollFactor.set(0.9, 1);
-closet.setGraphicSize(Std.int(closet.width * 1.6));
-closet.updateHitbox();
-add(closet);
+    closet = new FlxSprite(-700, -520).loadGraphic(Paths.image('clubroom/DDLCfarbg'));
+    closet.scrollFactor.set(0.9, 1);
+    closet.setGraphicSize(Std.int(closet.width * 1.6));
+    closet.updateHitbox();
+    add(closet);
 
-clubroom = new FlxSprite(-700, -520).loadGraphic(Paths.image('clubroom/DDLCbg'));
-clubroom.scrollFactor.set(1, 1);
-clubroom.setGraphicSize(Std.int(clubroom.width * 1.6));
-clubroom.updateHitbox();
-add(clubroom);
+    clubroom = new FlxSprite(-700, -520).loadGraphic(Paths.image('clubroom/DDLCbg'));
+    clubroom.scrollFactor.set(1, 1);
+    clubroom.setGraphicSize(Std.int(clubroom.width * 1.6));
+    clubroom.updateHitbox();
+    add(clubroom);
 
-blackScreen = new FlxSprite(-FlxG.width * FlxG.camera.zoom,
+    blackScreen = new FlxSprite(-FlxG.width * FlxG.camera.zoom,
     -FlxG.height * FlxG.camera.zoom).makeGraphic(FlxG.width * 3, FlxG.height * 3, FlxColor.BLACK);
-blackScreen.scrollFactor.set();
+    blackScreen.scrollFactor.set();
 
-blackScreenBG = new FlxSprite(-FlxG.width * FlxG.camera.zoom,
+    blackScreenBG = new FlxSprite(-FlxG.width * FlxG.camera.zoom,
     -FlxG.height * FlxG.camera.zoom).makeGraphic(FlxG.width * 3, FlxG.height * 3, FlxColor.BLACK);
-blackScreenBG.alpha = 0.0001;
-blackScreenBG.scrollFactor.set();
+    blackScreenBG.alpha = 0.0001;
+    blackScreenBG.scrollFactor.set();
 
-blackScreentwo = new FlxSprite(-FlxG.width * FlxG.camera.zoom,
+    blackScreentwo = new FlxSprite(-FlxG.width * FlxG.camera.zoom,
     -FlxG.height * FlxG.camera.zoom).makeGraphic(FlxG.width * 3, FlxG.height * 3, FlxColor.BLACK);
-blackScreentwo.scrollFactor.set();
+    blackScreentwo.scrollFactor.set();
 
 
-if (curSong.toLowerCase() == 'neet')
-{
-    bgDokis.alpha = 0.001;
+    if (curSong.toLowerCase() == 'neet')
+    {
+        bgDokis.alpha = 0.001;
 
-    add(blackScreenBG);
+        add(blackScreenBG);
 
-    spotlight = new FlxSprite(-700, -520).loadGraphic(Paths.image('clubroom/NEETspotlight'));
-    spotlight.scrollFactor.set(1, 0.9);
-    spotlight.setGraphicSize(Std.int(spotlight.width * 1.6));
-    spotlight.alpha = 0.001;
-    spotlight.updateHitbox();
-    add(spotlight);
-}
+        spotlight = new FlxSprite(-700, -520).loadGraphic(Paths.image('clubroom/NEETspotlight'));
+        spotlight.scrollFactor.set(1, 0.9);
+        spotlight.setGraphicSize(Std.int(spotlight.width * 1.6));
+        spotlight.alpha = 0.001;
+        spotlight.updateHitbox();
+        add(spotlight);
+    }
 
     add(bgDokis);
 
@@ -252,6 +258,13 @@ if (curSong.toLowerCase() == 'neet')
                     natsuki.setPosition(1247, 303);
                     protag.setPosition(150, 152);
                 }
+        }
+        //song BG charaters real messey lamo - Inakuro
+        
+        //sayori bg
+        if(["rain clouds", "my confession"].contains(curSong)){
+        yuriBG = true;
+        natsukiBG = true;
         }
 
     }

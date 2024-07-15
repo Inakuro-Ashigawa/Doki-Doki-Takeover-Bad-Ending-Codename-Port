@@ -4,6 +4,8 @@ import funkin.menus.ModSwitchMenu;
 import funkin.editors.EditorPicker;
 import funkin.backend.utils.DiscordUtil;
 import funkin.backend.MusicBeatState;
+
+
 //imports
 import flixel.FlxG;
 import flixel.FlxObject;
@@ -53,9 +55,6 @@ var menuCharacterData = {
     frames: 0,
     scale: [0, 0]
 };
-var menuCharJSON = {
-    characters: "string"
-};
 
 // reading data is the same way
 
@@ -63,14 +62,10 @@ function setColorUniform(obj:Dynamic, color:Int) {
     obj.value = [(color >> 16 & 0xFF) / 255, (color >> 8 & 0xFF) / 255, (color & 0xFF) / 255];
 }
 
+var menuCharJSON = Json.parse(Assets.getText(Paths.json('menuCharacters')));
 
 function create(){
 
-/*
-    ColorMaskShader.Color1 = 0xFFFDEBF7;
-    ColorMaskShader.Color2 = 0xFFFDDBF1;
-    backdrop.shader = ColorMaskShader;
-*/
 
     backdrop = new FlxBackdrop(Paths.image('scrollingBG'));
     backdrop.velocity.set(-10, 0);
@@ -80,7 +75,7 @@ function create(){
     setColorUniform(backdrop.shader.data.color2, 0xFFFDDBF1);
     add(backdrop);
     
-    var menuString:String = Assets.getText(Paths.json('menuCharacters'));
+
     var jsonFound:Bool = true;
     var twenty:Array<String> = ['together1', 'yuri', 'natsuki', 'sayori', 'pixelmonika', 'senpai'];
     var ten:Array<String> = ['sunnat', 'yuritabi', 'minusmonikapixel', 'yuriken', 'sayominus', 'cyrixstatic', 'zipori', 'nathaachama'];
@@ -96,8 +91,8 @@ function create(){
         ten.push('indiehorror');
     }
 
-    var random:Float = FlxG.random.int(0, twenty.length);
-
+    var random:Float =  FlxG.random.float(0, 1);
+    
     if (random < 0.60) // 60% chance
         show = selectMenuCharacter(twenty);
     else if (random >= 0.60 && random < 0.98) // 38% chance
@@ -105,22 +100,23 @@ function create(){
     else // 2% chance 
         show = selectMenuCharacter(two);
 
-    if (jsonFound)
-    {
-            if (menuCharJSON.characters.name == show)
+    for (char in menuCharJSON.characters)
+        {
+            if (char.name == show)
             {
                 // Found the character in the menuCharacter.json file
                 trace('found' + show + 'with' + random);
-                menu_character = new FlxSprite(menuCharacterData.spritePos[0], menuCharacterData.spritePos[1]);
-                menu_character.frames = Paths.getSparrowAtlas(menuCharacterData.atlas);
+                menu_character = new FlxSprite(char.spritePos[0], char.spritePos[1]);
+                menu_character.frames = Paths.getSparrowAtlas(char.atlas);
                 if (char.scale != null)
-                    menu_character.scale.set(menuCharacterData.scale[0], menuCharacterData.scale[1]);
-                menu_character.animation.addByPrefix('play', menuCharacterData.prefix, 
-                    (menuCharacterData.frames != null ? char.frames : 24), (menuCharacterData.looped != null ? menuCharacterData.looped : false));
+                    menu_character.scale.set(char.scale[0], char.scale[1]);
+                menu_character.animation.addByPrefix('play', char.prefix, 
+                    (char.frames != null ? char.frames : 24), (char.looped != null ? char.looped : false));
                 // Break the for loop so we can move on from this lol
-                
+                break;
             }
-    }
+        }
+
 
     if (menu_character == null)
     {
@@ -213,33 +209,33 @@ function create(){
 }
 
 function update(elapsed:Float){
-		if (FlxG.sound.music.volume < 0.8)
-			FlxG.sound.music.volume += 0.5 * FlxG.elapsed;
+    if (FlxG.sound.music.volume < 0.8)
+        FlxG.sound.music.volume += 0.5 * FlxG.elapsed;
 
-        if (controls.UP_P)
-			{
-                FlxG.sound.play(Paths.sound('scrollMenu'));
-				changeItem(-1);
-			}
-				
-        if (controls.DOWN_P)
-			{
-                FlxG.sound.play(Paths.sound('scrollMenu'));
-				changeItem(1);
-			}	
-        if (controls.ACCEPT)
-            {
-                goToState();
-            }	
-
-        if (FlxG.keys.justPressed.SEVEN) {
-            openSubState(new EditorPicker());
-            persistentUpdate = false;
-            persistentDraw = true;
+    if (controls.UP_P)
+        {
+            FlxG.sound.play(Paths.sound('scrollMenu'));
+            changeItem(-1);
         }
+            
+    if (controls.DOWN_P)
+        {
+            FlxG.sound.play(Paths.sound('scrollMenu'));
+            changeItem(1);
+        }	
+    if (controls.ACCEPT)
+        {
+            goToState();
+        }	
 
-    
-
+    if (FlxG.keys.justPressed.SEVEN) {
+        openSubState(new EditorPicker());
+        persistentUpdate = false;
+        persistentDraw = true;
+    }
+    if (FlxG.keys.justPressed.FOUR){
+        FlxG.switchState(new ModState("Doki/Coustume"));
+    }
     if (controls.SWITCHMOD) {
         openSubState(new ModSwitchMenu());
         persistentUpdate = false;
@@ -250,6 +246,7 @@ function changeItem(huh:Int = 0)
 	{
 		//curSelected += huh;
         curSelected = FlxMath.wrap(curSelected + huh, 0, optionShit.length-1);
+        
 
 		menuItems.forEach(function(txt:FlxText)
 		{
@@ -319,7 +316,7 @@ function goToState()
             case 'options':
                 FlxG.switchState(new OptionsMenu());
             case 'exit':
-                openSubState(new CloseGameSubState());
+                //openSubState(new CloseGameSubState());
         }
     }
 function beatHit()
@@ -336,8 +333,7 @@ function selectMenuCharacter(array:Array<String>):String
 	{
 		var index:Int = 0;
 		if (array.length >= 2)
-
-         index = array[FlxG.random.int(0, array.length)];
+         index = array[FlxG.random.float(array.length)];
 
 		var char:String = '';
 		switch (array[index])

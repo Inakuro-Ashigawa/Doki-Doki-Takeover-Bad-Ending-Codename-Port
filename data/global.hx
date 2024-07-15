@@ -5,6 +5,7 @@ import lime.graphics.Image;
 public static var SaveData = FlxG.save.data;
 
 
+
 static var redirectStates:Map<FlxState, String> = [
     TitleState => "Doki/DokiTitle",
     MainMenuState =>  "Doki/DokiMain",

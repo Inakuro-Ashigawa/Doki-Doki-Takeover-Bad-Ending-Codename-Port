@@ -16,8 +16,6 @@ function setColorUniform(obj:Dynamic, color:Int) {
 }
 
 function create(){
-
-
     FlxG.cameras.remove(camHUD, false);
     FlxG.cameras.add(camGame2 = new HudCamera(), false);
     camGame2.bgColor = FlxColor.TRANSPARENT;
@@ -152,6 +150,8 @@ function postCreate(){
     cg2.screenCenter();
     add(cg2);
 
+    camGame2.zoom = camGame.zoom;
+    
     stickerSprites = new FlxSpriteGroup();
     stickerSprites.alpha = 0.001;
     add(stickerSprites);
@@ -191,7 +191,8 @@ function postCreate(){
             sticker.cameras = [camHUD];
             stickerSprites.cameras = [camHUD];
 			stickerSprites.add(sticker);
-        }
+
+    }
         
 var cancelCameraMove:Bool = true;
 

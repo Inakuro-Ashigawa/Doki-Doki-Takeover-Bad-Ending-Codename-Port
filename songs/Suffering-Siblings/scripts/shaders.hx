@@ -21,14 +21,12 @@ static var doGlitchIconEffect = true;
 function postUpdate(elapsed) {
     iconP1.x = 620;
     iconP2.x = 520;
-    
-
     switch(curCameraTarget) {
         case 0:
             defaultCamZoom = dadCamZoom;
         case 1:
             defaultCamZoom = bfCamZoom;
-        }
+    }
 }
 function postCreate(){
     healthBarBG.scale.set(1.26, 1.5);

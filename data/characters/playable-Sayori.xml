@@ -1,0 +1,10 @@
+<!DOCTYPE codename-engine-character>
+<character x="0" icon="Sayori" y="-280" isGF="false" color="#95E0FA" flipX="false" isPlayer="true" holdTime="6" sprite="sayori/Doki_Sayo_Assets">
+	<anim x="-98" loop="false" y="-8" fps="24" anim="Sayo Sing Note Left" name="singRIGHT"/>
+	<anim x="-32" loop="false" y="-2" fps="24" anim="Sayo Sing Note Right" name="singLEFT"/>
+	<anim x="-88" loop="false" y="-44" fps="24" anim="Sayo Sing Note Down" name="singDOWN"/>
+	<anim x="0" loop="false" y="0" fps="24" anim="Sayo Idle nrw test" indices="25,0,1,2,3,4,5,6,7,8,9,10,11,12" name="danceRight"/>
+	<anim x="0" loop="false" y="0" fps="24" anim="Sayo Idle nrw test" indices="13,14,15,16,17,18,19,20,21,22,23,24" name="danceLeft"/>
+	<anim x="-51" loop="false" y="73" fps="24" anim="Sayo Sing Note Up" name="singUP"/>
+	<anim x="-21" loop="false" y="1" fps="24" anim="Sayo Nara animated" name="nara"/>
+</character>

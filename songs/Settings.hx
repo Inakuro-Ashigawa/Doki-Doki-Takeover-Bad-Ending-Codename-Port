@@ -1,10 +1,5 @@
 var option = FlxG.save.data;
-public var protagBG:Bool = false;
-public var natsukiBG:Bool = false;
-public var monikaBG:Bool = false;
-public var yuriBG:Bool = false;
-public var sayoriBG:Bool = false;
-public var necksnap:Bool = false;
+
 
 function create(){
 }
@@ -23,9 +18,11 @@ if (option.gfCountdown){
 
         case 2:
             camera.zoom += 0.06; 
+            curCameraTarget = 0;
             gf.playAnim('countdownOne', true); 
 
         case 3: 
+            curCameraTarget = curCameraTarget;
             FlxTween.tween(camera, {zoom: defaultCamZoom}, 1.2); // for zoom back to their default camZoom
             gf.playAnim('countdownGo', true); 
             camHUD.flash(FlxColor.WHITE, 0.25);
