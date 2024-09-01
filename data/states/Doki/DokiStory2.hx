@@ -373,8 +373,7 @@ else if(curSelected == 8 && story_sidestories != null)
 story_cursor.setPosition(icons[curSelected][2], icons[curSelected][3]);
 }
 
-public function unlockedWeeks()
-{
+public function unlockedWeeks(){
 if (FlxG.save.data.beatPrologue)
 {
     FlxG.save.data.weekUnlocked = 2;

@@ -65,8 +65,6 @@ function setColorUniform(obj:Dynamic, color:Int) {
 var menuCharJSON = Json.parse(Assets.getText(Paths.json('menuCharacters')));
 
 function create(){
-
-
     backdrop = new FlxBackdrop(Paths.image('scrollingBG'));
     backdrop.velocity.set(-10, 0);
     backdrop.antialiasing = Options.Antialiasing;
@@ -305,7 +303,7 @@ function goToState()
                 FlxG.switchState(new StoryMenuState());
                 trace("Story Menu Selected");
             case 'freeplay':
-                FlxG.switchState(new FreeplayState());
+                FlxG.switchState(new ModState("Doki/DokiFreeplay"));
                 trace("Freeplay Menu Selected");
             case 'credits':
                 FlxG.switchState(new CreditsState());
@@ -331,9 +329,10 @@ function beatHit()
 }
 function selectMenuCharacter(array:Array<String>):String
 	{
-		var index:Int = 0;
-		if (array.length >= 2)
-         index = array[FlxG.random.float(array.length)];
+        if (array.length > 0) {
+            var index = FlxG.random.int(0, array.length - 1);
+            return array[index];
+        }
 
 		var char:String = '';
 		switch (array[index])

@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="sayoriSALV.png">
+<SubTexture name="sayoriSALV idle0000" x="0" y="0" width="456" height="734" frameX="-112" frameY="-364" frameWidth="720" frameHeight="1280" />
+<SubTexture name="sayoriSALV idle0001" x="456" y="0" width="451" height="732" frameX="-117" frameY="-366" frameWidth="720" frameHeight="1280" />
+<SubTexture name="sayoriSALV idle0002" x="907" y="0" width="449" height="739" frameX="-124" frameY="-361" frameWidth="720" frameHeight="1280" />
+<SubTexture name="sayoriSALV idle0003" x="1356" y="0" width="449" height="742" frameX="-127" frameY="-358" frameWidth="720" frameHeight="1280" />
+<SubTexture name="sayoriSALV idle0004" x="0" y="742" width="451" height="745" frameX="-128" frameY="-355" frameWidth="720" frameHeight="1280" />
+<SubTexture name="sayoriSALV singDOWN0000" x="451" y="742" width="438" height="711" frameX="-112" frameY="-388" frameWidth="720" frameHeight="1280" />
+<SubTexture name="sayoriSALV singDOWN0001" x="889" y="742" width="434" height="721" frameX="-122" frameY="-379" frameWidth="720" frameHeight="1280" />
+<SubTexture name="sayoriSALV singRIGHT0000" x="1323" y="742" width="432" height="744" frameX="-115" frameY="-356" frameWidth="720" frameHeight="1280" />
+<SubTexture name="sayoriSALV singRIGHT0001" x="0" y="1487" width="436" height="744" frameX="-122" frameY="-356" frameWidth="720" frameHeight="1280" />
+<SubTexture name="sayoriSALV singUP0000" x="436" y="1487" width="437" height="783" frameX="-131" frameY="-319" frameWidth="720" frameHeight="1280" />
+<SubTexture name="sayoriSALV singUP0001" x="873" y="1487" width="447" height="771" frameX="-123" frameY="-329" frameWidth="720" frameHeight="1280" />
+<SubTexture name="sayoriSALV singLEFT0000" x="1320" y="1487" width="478" height="743" frameX="-129" frameY="-357" frameWidth="720" frameHeight="1280" />
+<SubTexture name="sayoriSALV singLEFT0001" x="0" y="2270" width="468" height="746" frameX="-130" frameY="-354" frameWidth="720" frameHeight="1280" />
+</TextureAtlas>

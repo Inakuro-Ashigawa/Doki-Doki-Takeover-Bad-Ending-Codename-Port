@@ -1,0 +1,17 @@
+<!DOCTYPE codename-engine-stage>
+<stage folder="libitina/" zoom=".6">
+	<sprite x="182" y="-1078" sprite="bigwindow" name="wingf">
+		<property type="float" value="1.7" name="scale.y"/>
+	</sprite>
+	<gf x="329" y="-788"/>
+	<sprite x="-156" y="140" sprite="bigwindow" name="windad">
+		<property type="float" value="1.7" name="scale.y"/>
+	</sprite>
+	<dad x="-68" y="412"/>
+	<sprite x="780" y="138" sprite="bigwindow" name="winbf">
+		<property type="float" value="1.7" name="scale.y"/>
+	</sprite>
+	<bf x="1049" y="439"/>
+	<combo x="843" y="187"/>
+	<sprite x="470" y="-1153" sprite="bigwindow" name="winLib"/>
+</stage>

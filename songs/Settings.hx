@@ -4,7 +4,7 @@ var option = FlxG.save.data;
 function create(){
 }
 function onCountdown(event) {
-if (option.gfCountdown){
+if (option.gfCountdown && gf != null){
     switch(event.swagCounter) {
         case 0:
             curCameraTarget = 0;

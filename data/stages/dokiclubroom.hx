@@ -1,18 +1,13 @@
 import flixel.group.FlxGroup.FlxTypedGroup;
 import flixel.addons.display.FlxBackdrop;
+
 var bgDokis:FlxTypedGroup<FlxSprite>;
-var bgDokis = new FlxTypedGroup();
 var whiteflash:FlxSprite;
 var pinkOverlay:FlxSprite;
 var blackScreen:FlxSprite;
 var blackScreenBG:FlxSprite;
 var blackScreentwo:FlxSprite;
 var isFestival:Bool = false;
-var protagBG:Bool = false;
-var natsukiBG:Bool = false;
-var monikaBG:Bool = false;
-var yuriBG:Bool = false;
-var sayoriBG:Bool = false;
 var necksnap:Bool = false;
 var cancelCameraMove:Bool = false;
 
@@ -20,6 +15,8 @@ var cancelCameraMove:Bool = false;
 function onCameraMove(e) if(cancelCameraMove) e.cancel();
 
 function create(){
+
+    bgDokis = new FlxTypedGroup();
 
     camOverlay = new FlxCamera();
     camOverlay.bgColor = 0;
@@ -36,7 +33,7 @@ function create(){
     monika.frames = Paths.getSparrowAtlas('bgdoki/monika');
     monika.animation.addByPrefix('bop', 'Moni BG', 24, false);
     monika.animation.play('bop');
-    monika.scrollFactor.set(1, 0.9);
+    monika.scrollFactor.set(1, 1);
     monika.setGraphicSize(Std.int(monika.width * 0.7));
     monika.updateHitbox();
 
@@ -45,7 +42,7 @@ function create(){
     sayori.frames = Paths.getSparrowAtlas('bgdoki/sayori');
     sayori.animation.addByPrefix('bop', 'Sayori BG', 24, false);
     sayori.animation.play('bop');
-    sayori.scrollFactor.set(1, 0.9);
+    sayori.scrollFactor.set(1, 1);
     sayori.setGraphicSize(Std.int(sayori.width * 0.7));
     sayori.updateHitbox();
 
@@ -53,7 +50,7 @@ function create(){
     natsuki.frames = Paths.getSparrowAtlas('bgdoki/natsuki');
     natsuki.animation.addByPrefix('bop', 'Natsu BG', 24, false);
     natsuki.animation.play('bop');
-    natsuki.scrollFactor.set(1, 0.9);
+    natsuki.scrollFactor.set(1, 1);
     natsuki.setGraphicSize(Std.int(natsuki.width * 0.7));
     natsuki.updateHitbox();
 
@@ -61,7 +58,7 @@ function create(){
     protag.frames = Paths.getSparrowAtlas('bgdoki/protag');
     protag.animation.addByPrefix('bop', 'Protag-kun BG', 24, false);
     protag.animation.play('bop');
-    protag.scrollFactor.set(1, 0.9);
+    protag.scrollFactor.set(1, 1);
     protag.setGraphicSize(Std.int(protag.width * 0.7));
     protag.updateHitbox();
     
@@ -69,7 +66,7 @@ function create(){
     yuri.frames = Paths.getSparrowAtlas('bgdoki/yuri');
     yuri.animation.addByPrefix('bop', 'Yuri BG', 24, false);
     yuri.animation.play('bop');
-    yuri.scrollFactor.set(1, 0.9);
+    yuri.scrollFactor.set(1, 1);
     yuri.setGraphicSize(Std.int(yuri.width * 0.7));
     yuri.updateHitbox();
 
@@ -199,34 +196,13 @@ function create(){
         add(spotlight);
     }
 
-    add(bgDokis);
-
         if (curSong.toLowerCase() != 'obsession')
         {
             if (isFestival)
             {
                 var club:Array= [monika, sayori, natsuki, protag, yuri];
-                for (member in club)
-                    member.color = 0x828282;
+                    club.color = 0x828282;
             }
-
-        if (monikaBG){
-            bgDokis.add(monika);
-        }
-        if (sayoriBG)
-        {  
-            bgDokis.add(sayori);
-        }
-        if (natsukiBG){
-            bgDokis.add(natsuki);
-        }
-        if (protagBG){
-            bgDokis.add(protag);
-        }
-       if (yuriBG)
-            bgDokis.add(yuri);
-
-    }
 
         switch (dad.curCharacter)
         {
@@ -259,15 +235,34 @@ function create(){
                     protag.setPosition(150, 152);
                 }
         }
-        //song BG charaters real messey lamo - Inakuro
-        
+        //song BG charaters real messey lamo - Inakuro 
+        /*
+        bgDokis.add(monika); 
+        bgDokis.add(sayori);
+        bgDokis.add(natsuki);
+        bgDokis.add(protag);
+        bgDokis.add(yuri); 
+        */
         //sayori bg
         if(["rain clouds", "my confession"].contains(curSong)){
-        yuriBG = true;
-        natsukiBG = true;
+            bgDokis.add(natsuki);
+            bgDokis.add(yuri);  
         }
-
+        if(["my sweets", "baka"].contains(curSong)){
+            bgDokis.add(sayori);
+            bgDokis.add(yuri);  
+        }
+        if(["deep breaths"].contains(curSong)){
+            bgDokis.add(sayori);
+            bgDokis.add(natsuki);  
+        }
+        if(["reconciliation"].contains(curSong)){
+            bgDokis.add(sayori);
+            bgDokis.add(natsuki);  
+            bgDokis.add(yuri);  
+        }
     }
+}   
 function update(){
     if (necksnap){
         gf.danceOnBeat = false;
@@ -275,6 +270,9 @@ function update(){
     }
 }
 function postCreate(){
+
+    
+add(bgDokis);
 
 if (curSong.toLowerCase() == 'obsession')
     {

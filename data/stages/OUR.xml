@@ -1,0 +1,9 @@
+<!DOCTYPE codename-engine-stage>
+<stage folder="clubroom/" zoom="1.05">
+	<gf x="700" y="430"/>
+	<sprite x="116" y="-44" sprite="DDLCfarbg" scale="1.6" name="DDLCfarbg"/>
+	<sprite x="103" y="-106" sprite="DDLCbg" scale="1.6" name="DDLCbg"/>
+	<dad x="674" camxoffset="200" y="48" camyoffset="290"/>
+	<bf x="996" camxoffset="300" y="296" camyoffset="100"/>
+	<combo x="842" y="574"/>
+</stage>

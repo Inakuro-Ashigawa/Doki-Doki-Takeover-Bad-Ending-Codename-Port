@@ -29,45 +29,42 @@ var ratingStuff:Array<Dynamic> = [
 ];
 
 function create(){
-PauseSubState.script = 'data/scripts/DokiPause';
+    PauseSubState.script = 'data/scripts/DokiPause';
+    if (option.bestGirl == null){
+        option.bestGirl = 'Girlfriend';
+    }
 }
 
 function postCreate() {
+    camBars = new FlxCamera();
+    camBars.bgColor = 0;
+    FlxG.cameras.remove(camHUD, false);
+    FlxG.cameras.add(camBars, false);
+    FlxG.cameras.add(camHUD, false);
 
-camBars = new FlxCamera();
-camBars.bgColor = 0;
-FlxG.cameras.remove(camHUD, false);
-FlxG.cameras.add(camBars, false);
-FlxG.cameras.add(camHUD, false);
+    DokiTxt = new FlxText(0, 685, FlxG.width, "Score: 0 | Combo Breaks: 0 | Rating: ???");
+    DokiTxt.setFormat(Paths.font("riffic.ttf"), 20, FlxColor.WHITE, "center", FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+    DokiTxt.borderSize = 1.25;
+    DokiTxt.cameras = [camHUD];
+    DokiTxt.antialiasing = true;
+    DokiTxt.scrollFactor.set();
+    DokiTxt.screenCenter(FlxAxes.X);
 
-DokiTxt = new FlxText(0, 685, FlxG.width, "Score: 0 | breaks: 0 | Rating: ?");
-//DokiTxt = new FlxText(0, healthBarBG.y + 40, "Score: 0 Misses: 0  Rating: ?" , 20);
-DokiTxt.setFormat(Paths.font("HKGrotesk-Bold.ttf"), 20, FlxColor.WHITE, "center", FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
-DokiTxt.borderSize = 1.25;
-DokiTxt.cameras = [camHUD];
-DokiTxt.antialiasing = true;
-DokiTxt.scrollFactor.set();
-DokiTxt.screenCenter(FlxAxes.X);
+    remove(scoreTxt);
+    remove(missesTxt);
+    remove(accuracyTxt);
 
-remove(scoreTxt);
-remove(missesTxt);
-remove(accuracyTxt);
+    add(DokiTxt);
 
-add(DokiTxt);
+    blackbarTop.alpha = 0.001;
+    blackbarTop.scrollFactor.set(0,0);
+    blackbarTop.cameras = [camBars];
+    add(blackbarTop);
 
-blackbarTop.alpha = 0.001;
-blackbarTop.scrollFactor.set(0,0);
-blackbarTop.cameras = [camBars];
-add(blackbarTop);
-
-blackbarBottom.alpha = 0.001;
-blackbarBottom.scrollFactor.set(0,0);
-blackbarBottom.cameras = [camBars];
-add(blackbarBottom);	
-
-if (Pixle)
-DokiTxt.antialiasing = false;
-DokiTxt.setFormat(Paths.font("LanaPixel.ttf"), 20, FlxColor.WHITE, "center", FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+    blackbarBottom.alpha = 0.001;
+    blackbarBottom.scrollFactor.set(0,0);
+    blackbarBottom.cameras = [camBars];
+    add(blackbarBottom);	
 }
 function getRating(accuracy:Float):String {
     if (accuracy < 0) {
@@ -99,9 +96,9 @@ function update(elapsed:float){
     var rating:String = getRating(accuracy);
     getRatingFC(accuracy, misses);
 
-    if (songScore > 0 || acc > 0 || misses > 0)  DokiTxt.text = "Score: " + songScore + " | breaks: " + misses +  " | Rating: " + rating + " (" + acc + "%)" + " - " + ratingFC;
-    } 
+    if (songScore > 0 || acc > 0 || misses > 0)  DokiTxt.text = "Score: " + songScore + " | Combo Breaksa: " + misses +  " | Rating: " + rating + " (" + acc + "%)" + " - " + ratingFC;
 
+}
 function onPlayerHit(event) {
     if (event.note.isSustainNote) return;
 
@@ -130,25 +127,24 @@ function onNoteCreation(event:NoteCreationEvent) {
     if(splash)
     event.note.splash = "Doki";
 }
-public function blackBars(inorout:Bool)
-	{
-		if (inorout)
-		{
-			blackbarTop.alpha = 1;
-			blackbarBottom.alpha = 1;
+public function blackBars(inorout:Bool){
+    if (inorout)
+    {
+        blackbarTop.alpha = 1;
+        blackbarBottom.alpha = 1;
 
-			FlxTween.tween(blackbarBottom, {y: 628}, 1.2, {ease: FlxEase.sineOut});
-			FlxTween.tween(blackbarTop, {y: 0}, 1.2, {ease: FlxEase.sineOut});
-		}
-		else
-		{
-			FlxTween.tween(blackbarBottom, {y: 822}, 1.2, {ease: FlxEase.sineIn});
-			FlxTween.tween(blackbarTop, {y: -102}, 1.2, {ease: FlxEase.sineIn});
+        FlxTween.tween(blackbarBottom, {y: 628}, 1.2, {ease: FlxEase.sineOut});
+        FlxTween.tween(blackbarTop, {y: 0}, 1.2, {ease: FlxEase.sineOut});
+    }
+    else
+    {
+        FlxTween.tween(blackbarBottom, {y: 822}, 1.2, {ease: FlxEase.sineIn});
+        FlxTween.tween(blackbarTop, {y: -102}, 1.2, {ease: FlxEase.sineIn});
 
-			new FlxTimer().start(1.2, function(tmr:FlxTimer)
-			{
-				blackbarTop.alpha = 0.001;
-				blackbarBottom.alpha = 0.001;
-			});
-		}
-	}
+        new FlxTimer().start(1.2, function(tmr:FlxTimer)
+        {
+            blackbarTop.alpha = 0.001;
+            blackbarBottom.alpha = 0.001;
+        });
+    }
+}

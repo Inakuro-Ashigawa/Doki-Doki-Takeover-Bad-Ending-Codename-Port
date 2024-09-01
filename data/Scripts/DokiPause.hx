@@ -63,9 +63,6 @@ var deathText:FlxText = new FlxText(20, 50, 0, "Blue balled: " + PlayState.death
 var pauseTxt:FlxText = new FlxText(20, 50, 0, PlayState.difficulty, 32);
 //not used...yet
 //var botplayTxt:FlxText = new FlxText(20, 50, 0, "Botplay = " +  FlxG.save.data.botplayOption, 32);
-
-function postCreate(){
-}
 function create(event){
     event.cancel();
 
@@ -205,6 +202,7 @@ function create(event){
                 songText.setFormat(Paths.font("Journal.ttf"), 27, FlxColor.WHITE, "left", FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
                 songText.antialiasing = Options.antialiasing;
                 songText.cameras = [pauseCam];
+                songText.borderSize = 1.9;
                 songText.ID = i;
                 grpMenuShit.add(songText);
     
@@ -278,9 +276,9 @@ function update(elapsed:Float)
                 else
                 {
                     if (txt.ID == curSelected)
-                        txt.setFormat(Paths.font("riffic.ttf"), 40, selColor, "LEFT");
+                        txt.setFormat(Paths.font("riffic.ttf"), 40, selColor, "left", FlxTextBorderStyle.OUTLINE, FlxColor.PINK);
                     else
-                        txt.setFormat(Paths.font("riffic.ttf"), 40, itmColor, "LEFT");
+                        txt.setFormat(Paths.font("riffic.ttf"), 40, itmColor, "left", FlxTextBorderStyle.OUTLINE, FlxColor.PINK);
                 }
             });
         }

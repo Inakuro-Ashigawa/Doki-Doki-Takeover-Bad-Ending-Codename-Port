@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="natsukiLR-front.png">
+<SubTexture name="natsukiLR-front idle0000" x="0" y="0" width="477" height="746" frameX="-150" frameY="-430" frameWidth="720" frameHeight="1280" />
+<SubTexture name="natsukiLR-front idle0001" x="477" y="0" width="477" height="747" frameX="-147" frameY="-429" frameWidth="720" frameHeight="1280" />
+<SubTexture name="natsukiLR-front idle0002" x="954" y="0" width="476" height="747" frameX="-141" frameY="-429" frameWidth="720" frameHeight="1280" />
+<SubTexture name="natsukiLR-front idle0003" x="1430" y="0" width="476" height="749" frameX="-140" frameY="-427" frameWidth="720" frameHeight="1280" />
+<SubTexture name="natsukiLR-front idle0004" x="1906" y="0" width="476" height="750" frameX="-139" frameY="-426" frameWidth="720" frameHeight="1280" />
+<SubTexture name="natsukiLR-front singDOWN0000" x="0" y="750" width="476" height="729" frameX="-194" frameY="-465" frameWidth="720" frameHeight="1280" />
+<SubTexture name="natsukiLR-front singDOWN0001" x="476" y="750" width="476" height="733" frameX="-189" frameY="-460" frameWidth="720" frameHeight="1280" />
+<SubTexture name="natsukiLR-front singDOWN0002" x="952" y="750" width="476" height="737" frameX="-184" frameY="-455" frameWidth="720" frameHeight="1280" />
+<SubTexture name="natsukiLR-front singDOWN0003" x="1428" y="750" width="476" height="741" frameX="-178" frameY="-450" frameWidth="720" frameHeight="1280" />
+<SubTexture name="natsukiLR-front singRIGHT0000" x="1904" y="750" width="476" height="760" frameX="-82" frameY="-417" frameWidth="720" frameHeight="1280" />
+<SubTexture name="natsukiLR-front singRIGHT0001" x="0" y="1510" width="476" height="760" frameX="-85" frameY="-417" frameWidth="720" frameHeight="1280" />
+<SubTexture name="natsukiLR-front singRIGHT0002" x="476" y="1510" width="476" height="759" frameX="-88" frameY="-417" frameWidth="720" frameHeight="1280" />
+<SubTexture name="natsukiLR-front singRIGHT0003" x="952" y="1510" width="476" height="759" frameX="-91" frameY="-417" frameWidth="720" frameHeight="1280" />
+<SubTexture name="natsukiLR-front singUP0000" x="1428" y="1510" width="478" height="779" frameX="-154" frameY="-381" frameWidth="720" frameHeight="1280" />
+<SubTexture name="natsukiLR-front singUP0001" x="1906" y="1510" width="478" height="774" frameX="-152" frameY="-388" frameWidth="720" frameHeight="1280" />
+<SubTexture name="natsukiLR-front singUP0002" x="0" y="2289" width="478" height="774" frameX="-149" frameY="-391" frameWidth="720" frameHeight="1280" />
+<SubTexture name="natsukiLR-front singUP0003" x="478" y="2289" width="478" height="773" frameX="-147" frameY="-394" frameWidth="720" frameHeight="1280" />
+<SubTexture name="natsukiLR-front singLEFT0000" x="956" y="2289" width="508" height="745" frameX="-160" frameY="-432" frameWidth="720" frameHeight="1280" />
+<SubTexture name="natsukiLR-front singLEFT0001" x="1464" y="2289" width="504" height="745" frameX="-157" frameY="-432" frameWidth="720" frameHeight="1280" />
+<SubTexture name="natsukiLR-front singLEFT0002" x="1968" y="2289" width="501" height="745" frameX="-155" frameY="-432" frameWidth="720" frameHeight="1280" />
+<SubTexture name="natsukiLR-front singLEFT0003" x="0" y="3063" width="499" height="745" frameX="-152" frameY="-432" frameWidth="720" frameHeight="1280" />
+</TextureAtlas>

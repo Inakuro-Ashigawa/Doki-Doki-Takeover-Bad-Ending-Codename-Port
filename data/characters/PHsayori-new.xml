@@ -1,0 +1,10 @@
+<!DOCTYPE codename-engine-character>
+<character x="-475" y="-150" sprite="sayori/PHsayori" scale="0.6" camx="-150" camy="-280" icon="sayori" color="#95E0FA" holdTime="6.1">
+	<anim name="singRIGHT" anim="sayori right" x="0" y="0" fps="24" loop="false"/>
+	<anim name="singLEFT" anim="sayori left" x="0" y="0" fps="24" loop="false"/>
+	<anim name="singDOWN" anim="sayori down0" x="0" y="0" fps="24" loop="false"/>
+	<anim name="singUP" anim="sayori up0" x="0" y="0" fps="24" loop="false"/>
+	<anim name="bowtie" anim="sayori bowtie0" x="0" y="0" fps="24" loop="false"/>
+	<anim name="DanceLeft" anim="sayori DanceLeft" x="0" y="0" fps="24" loop="false"/>
+	<anim name="DanceRight" anim="sayori DanceRight" x="0" y="0" fps="24" loop="false"/>
+</character>
